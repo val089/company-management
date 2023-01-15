@@ -13,4 +13,7 @@ export const GlobalStyles = {
     white: '#fff',
     green100: '#2bb879',
   },
+  fonts: {
+    poppinsBold: 'Poppins-Bold',
+  },
 };

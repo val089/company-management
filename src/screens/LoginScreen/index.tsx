@@ -6,6 +6,7 @@ import { GlobalStyles } from '../../constants/styles';
 import { LoginForm } from './LoginForm';
 import { LoadingOverlay } from '../../components/LoadingOverlay';
 import { signIn } from '../../utils/auth';
+import { Logo } from '../../components/Logo';
 
 export const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -30,6 +31,7 @@ export const LoginScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.screen}>
       <View style={styles.innerScreen}>
+        <Logo style={styles.logo} />
         <LoginForm onSubmit={submitHandler} />
       </View>
     </ScrollView>
@@ -46,5 +48,8 @@ const styles = StyleSheet.create({
   },
   innerScreen: {
     width: '100%',
+  },
+  logo: {
+    paddingBottom: 40,
   },
 });

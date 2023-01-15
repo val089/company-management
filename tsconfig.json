@@ -19,6 +19,6 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  // "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }

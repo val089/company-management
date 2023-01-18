@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleProp, TextStyle, Text, TextProps } from 'react-native';
 import { GlobalStyles } from '../../constants/styles';
 
-export type TypographyType = 'logoText';
+export type TypographyType = 'logoText' | 'button';
 
 interface TypographyProps extends TextProps {
   type: TypographyType;
@@ -14,6 +14,11 @@ export const Typography = ({ type, style = null, children, ...restProps }: Typog
     logoText: {
       fontSize: 40,
       fontFamily: GlobalStyles.fonts.poppinsBold,
+      color: GlobalStyles.colors.white,
+    },
+    button: {
+      fontSize: 18,
+      fontFamily: GlobalStyles.fonts.poppinsRegular,
       color: GlobalStyles.colors.white,
     },
   };

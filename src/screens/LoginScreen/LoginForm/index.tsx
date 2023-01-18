@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import { LoginFormValuesType, validationSchema } from './validationSchema';
 import { CustomTextField } from '../../../components/CustomTextField';
+import { CustomButton } from '../../../components/CustomButton';
+import { Typography } from '../../../components/Typography';
 
 const initialValues = {
   email: '',
@@ -51,8 +53,13 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           </View>
 
           <View style={styles.buttonsContainer}>
-            <Button onPress={() => handleSubmit()} title="Login" />
-            <Button onPress={() => navigation.navigate('SignUp')} title="Sign up" />
+            <CustomButton onPress={() => handleSubmit()} style={styles.button}>
+              <Typography type="button">Login</Typography>
+            </CustomButton>
+
+            <CustomButton onPress={() => navigation.navigate('SignUp')} style={styles.button}>
+              <Typography type="button">Sign up</Typography>
+            </CustomButton>
           </View>
         </View>
       )}
@@ -66,5 +73,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     paddingTop: 30,
+  },
+  button: {
+    marginBottom: 20,
   },
 });

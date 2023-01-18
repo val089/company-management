@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import { SignUpFormValuesType, validationSchema } from './validationSchema';
 import { CustomTextField } from '../../../components/CustomTextField';
+import { Typography } from '../../../components/Typography';
+import { CustomButton } from '../../../components/CustomButton';
 
 // import database from '@react-native-firebase/database';
 // import firestore from '@react-native-firebase/firestore';
@@ -82,9 +84,15 @@ export const SignUpForm = ({ onSubmit }: SignUpFormProps) => {
           </View>
 
           <View style={styles.buttonsContainer}>
-            <Button onPress={() => handleSubmit()} title="SignUp" />
             {/* <Button onPress={writeToFirestore} title="firestore" /> */}
-            <Button onPress={() => navigation.navigate('Login')} title="Sign in" />
+
+            <CustomButton onPress={() => handleSubmit()} style={styles.button}>
+              <Typography type="button">Sign up</Typography>
+            </CustomButton>
+
+            <CustomButton onPress={() => navigation.navigate('Login')} style={styles.button}>
+              <Typography type="button">Login</Typography>
+            </CustomButton>
           </View>
         </View>
       )}
@@ -98,5 +106,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     paddingTop: 30,
+  },
+  button: {
+    marginBottom: 20,
   },
 });

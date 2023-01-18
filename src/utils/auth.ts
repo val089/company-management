@@ -14,6 +14,10 @@ export const writeUserData = (user: IUser) => {
   return firebase.app().database(databaseURL).ref(`/users/${user.uid}`).set(user);
 };
 
+export const getUserData = (uid: string) => {
+  return firebase.app().database(databaseURL).ref(`/users/${uid}`);
+};
+
 export const createUser = async (email: string, password: string) => {
   try {
     const userAuth = await auth().createUserWithEmailAndPassword(email, password);

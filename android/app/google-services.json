@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571677426294",
+    "project_id": "company-management-278a5",
+    "storage_bucket": "company-management-278a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571677426294:android:9879cb60509d7861e85557",
+        "android_client_info": {
+          "package_name": "com.companymanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571677426294-lrsq3c7pa0s3mjbqb3qrqbbcu9l0tve0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companymanagement",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "571677426294-na8scencmrjel8fmo64dr8bri4mdtkv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsomoW-GaPRoOKkzhLbFlnWABDhjwzhTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571677426294-na8scencmrjel8fmo64dr8bri4mdtkv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

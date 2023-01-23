@@ -5,14 +5,17 @@ import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navig
 import { AuthContextProvider, AuthContext } from './src/context/auth-context';
 import auth from '@react-native-firebase/auth';
 
-import { HomeScreen } from './src/screens/HomeScreen';
 import { LoginScreen } from './src/screens/LoginScreen';
 import { SignUpScreen } from './src/screens/SignUpScreen';
+
+import { TabNavigation } from './src/navigation/TabNavigation';
 
 export type RootStackParamList = {
   Login: undefined;
   SignUp: undefined;
   Home: undefined;
+  EmployeesList: undefined;
+  TabNavigation: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -45,8 +48,12 @@ const AuthStack = () => {
 
 const AuthenticatedStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator initialRouteName="TabNavigation">
+      <Stack.Screen
+        name="TabNavigation"
+        component={TabNavigation}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

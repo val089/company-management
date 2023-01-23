@@ -3,13 +3,15 @@ import { GlobalStyles } from '../../constants/styles';
 
 interface CustomButtonProps extends PressableProps {
   style?: StyleProp<ViewStyle>;
+  onPress: () => void;
 }
 
-export const CustomButton = ({ children, style, ...restProps }: CustomButtonProps) => {
+export const CustomButton = ({ children, onPress, style, ...restProps }: CustomButtonProps) => {
   return (
     <View style={[styles.buttonContainer, style]}>
       <Pressable
         style={styles.button}
+        onPress={onPress}
         {...restProps}
         android_ripple={{ color: GlobalStyles.colors.blue100 }}>
         {children}

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@app/constants/styles';
 
 import { SignUpForm } from './SignUpForm';
-import { LoadingOverlay } from '../../components/LoadingOverlay';
+import { LoadingOverlay } from '@app/components/LoadingOverlay';
 
-import { createUser } from '../../utils/auth';
+import { createUser } from '@app/utils/auth';
 
 export const SignUpScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);

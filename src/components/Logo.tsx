@@ -1,5 +1,5 @@
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
-import { Typography } from '../Typography';
+import { Typography } from './Typography';
 
 interface LogoProps {
   style?: StyleProp<ViewStyle>;

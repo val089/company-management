@@ -2,14 +2,14 @@ import { useContext, useState, useEffect } from 'react';
 import { StatusBar, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthContextProvider, AuthContext } from './src/context/auth-context';
+import { AuthContextProvider, AuthContext } from '@app/context/auth-context';
 import auth from '@react-native-firebase/auth';
 
-import { LoginScreen } from './src/screens/LoginScreen';
-import { SignUpScreen } from './src/screens/SignUpScreen';
-import { AddEmployeeScreen } from './src/screens/EmployeesListScreen/AddEmployeeScreen';
+import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
+import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
+import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
 
-import { TabNavigation } from './src/navigation/TabNavigation';
+import { TabNavigation } from '@app/navigation/TabNavigation';
 
 export type RootStackParamList = {
   Login: undefined;

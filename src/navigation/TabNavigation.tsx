@@ -1,12 +1,12 @@
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { RootStackParamList } from '../../App';
-import { HomeScreen } from '../screens/HomeScreen';
-import { EmployeesListScreen } from '../screens/EmployeesListScreen';
-import { HomeIcon } from '../assets/icons/Menu/HomeIcon';
-import { GlobalStyles } from '../constants/styles';
-import { ListIcon } from '../assets/icons/Menu/ListIcon';
-import { Typography } from '../components/Typography';
+import { RootStackParamList } from '@app/App';
+import { HomeScreen } from '@app/screens/HomeScreen';
+import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
+import { HomeIcon } from '@app/assets/icons/Menu/HomeIcon';
+import { GlobalStyles } from '@app/constants/styles';
+import { ListIcon } from '@app/assets/icons/Menu/ListIcon';
+import { Typography } from '@app/components/Typography';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 

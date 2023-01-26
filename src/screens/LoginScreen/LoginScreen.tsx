@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@app/constants/styles';
 
 import { LoginForm } from './LoginForm';
-import { LoadingOverlay } from '../../components/LoadingOverlay';
-import { signIn } from '../../utils/auth';
-import { Logo } from '../../components/Logo';
+import { LoadingOverlay } from '@app/components/LoadingOverlay';
+import { signIn } from '@app/utils/auth';
+import { Logo } from '@app/components/Logo';
 
 export const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);

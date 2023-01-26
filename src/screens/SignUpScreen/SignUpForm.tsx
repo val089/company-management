@@ -2,25 +2,26 @@ import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
-import { LoginFormValuesType, validationSchema } from './validationSchema';
-import { CustomTextField } from '../../../components/CustomTextField';
-import { CustomButton } from '../../../components/CustomButton';
-import { Typography } from '../../../components/Typography';
+import { SignUpFormValuesType, validationSchema } from './validationSchema';
+import { CustomTextField } from '@app/components/CustomTextField';
+import { Typography } from '@app/components/Typography';
+import { CustomButton } from '@app/components/CustomButton';
 
 const initialValues = {
   email: '',
   password: '',
+  repeatPassword: '',
 };
 
-interface LoginFormProps {
+interface SignUpFormProps {
   onSubmit: (email: string, pasword: string) => Promise<void>;
 }
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+export const SignUpForm = ({ onSubmit }: SignUpFormProps) => {
   const navigation = useNavigation();
 
   const onSubmitHandler = useCallback(
-    async (data: LoginFormValuesType) => {
+    async (data: SignUpFormValuesType) => {
       await onSubmit(data.email, data.password);
     },
     [onSubmit],
@@ -31,7 +32,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       validateOnChange
       validateOnBlur
       validationSchema={validationSchema}
-      initialValues={initialValues as LoginFormValuesType}
+      initialValues={initialValues as SignUpFormValuesType}
       onSubmit={onSubmitHandler}>
       {({ handleChange, handleBlur, handleSubmit }) => (
         <View>
@@ -52,13 +53,23 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
             />
           </View>
 
+          <View style={styles.inputGroup}>
+            <CustomTextField
+              name="repeatPassword"
+              label="Repeat Password"
+              onChangeText={handleChange('repeatPassword')}
+              onBlur={handleBlur('repeatPassword')}
+              type="password"
+            />
+          </View>
+
           <View style={styles.buttonsContainer}>
             <CustomButton onPress={() => handleSubmit()} style={styles.button}>
-              <Typography type="button">Login</Typography>
+              <Typography type="button">Sign up</Typography>
             </CustomButton>
 
-            <CustomButton onPress={() => navigation.navigate('SignUp')} style={styles.button}>
-              <Typography type="button">Sign up</Typography>
+            <CustomButton onPress={() => navigation.navigate('Login')} style={styles.button}>
+              <Typography type="button">Login</Typography>
             </CustomButton>
           </View>
         </View>

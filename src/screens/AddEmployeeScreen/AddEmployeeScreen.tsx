@@ -3,8 +3,8 @@ import { View, StyleSheet, Alert } from 'react-native';
 import { AddEmployeeForm } from './AddEmployeeForm';
 import { GlobalStyles } from '@app/constants/styles';
 import { AuthContext } from '@app/context/auth-context';
-import { AddEmployeeFormValuesType } from './AddEmployeeForm/validationSchema';
-import { RootStackNavigation } from 'App';
+import { AddEmployeeFormValuesType } from './validationSchema';
+import { RootStackNavigation } from '@app/App';
 import firestore from '@react-native-firebase/firestore';
 
 export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmployee'>) => {

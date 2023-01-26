@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TextStyle, Text, TextProps } from 'react-native';
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@app/constants/styles';
 
 export type TypographyType = 'logoText' | 'button' | 'tabMenu';
 

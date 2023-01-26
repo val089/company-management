@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '@app/context/auth-context';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import { RootStackNavigation } from '../../../App';
+import { RootStackNavigation } from '@app/App';
 import { AddIcon } from '@app/assets/icons/AddIcon';
 import firestore from '@react-native-firebase/firestore';
 import { IEmployeeItem } from '@app/types';

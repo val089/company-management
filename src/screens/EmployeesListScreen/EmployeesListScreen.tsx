@@ -5,6 +5,7 @@ import { RootStackNavigation } from '@app/App';
 import { AddIcon } from '@app/assets/icons/AddIcon';
 import firestore from '@react-native-firebase/firestore';
 import { IEmployeeItem } from '@app/types';
+import { EmployeesListItem } from './EmployeesListItem';
 
 export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'EmployeesList'>) => {
   const { user } = useContext(AuthContext);
@@ -51,11 +52,8 @@ export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'Employe
       <FlatList
         data={employees}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.firstName}</Text>
-          </View>
-        )}
+        renderItem={EmployeesListItem}
+        contentContainerStyle={styles.list}
       />
     </View>
   );
@@ -63,4 +61,7 @@ export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'Employe
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
+  list: {
+    padding: 16,
+  },
 });

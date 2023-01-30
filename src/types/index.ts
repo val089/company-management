@@ -9,4 +9,6 @@ export interface IEmployeeItem {
   jobPosition: string;
   salary: string;
   email: string;
+  createdAt: string;
+  employmentDate: string;
 }

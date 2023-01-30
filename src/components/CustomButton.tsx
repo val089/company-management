@@ -6,14 +6,23 @@ interface CustomButtonProps extends PressableProps {
   onPress: () => void;
 }
 
-export const CustomButton = ({ children, onPress, style, ...restProps }: CustomButtonProps) => {
+export const CustomButton = ({
+  children,
+  onPress,
+  style,
+  disabled,
+  ...restProps
+}: CustomButtonProps) => {
   return (
     <View style={[styles.buttonContainer, style]}>
       <Pressable
-        style={styles.button}
+        style={[
+          styles.button,
+          { backgroundColor: disabled ? GlobalStyles.colors.grey700 : GlobalStyles.colors.blue100 },
+        ]}
         onPress={onPress}
-        {...restProps}
-        android_ripple={{ color: GlobalStyles.colors.blue100 }}>
+        android_ripple={{ color: GlobalStyles.colors.blue100 }}
+        {...restProps}>
         {children}
       </Pressable>
     </View>
@@ -30,6 +39,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
-    backgroundColor: GlobalStyles.colors.secondary100,
   },
 });

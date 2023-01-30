@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '@app/App';
-import { HomeScreen } from '@app/screens/HomeScreen';
+import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
 import { HomeIcon } from '@app/assets/icons/Menu/HomeIcon';
 import { GlobalStyles } from '@app/constants/styles';

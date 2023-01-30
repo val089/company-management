@@ -1,23 +1,16 @@
-import { useContext } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { AddEmployeeForm } from './AddEmployeeForm';
 import { GlobalStyles } from '@app/constants/styles';
-import { AuthContext } from '@app/context/auth-context';
 import { AddEmployeeFormValuesType } from './validationSchema';
 import { RootStackNavigation } from '@app/App';
-import firestore from '@react-native-firebase/firestore';
+import { useAddEmployeeMutation } from '@app/store/slices/api';
 
 export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmployee'>) => {
-  const { user } = useContext(AuthContext);
+  const [addEmployee] = useAddEmployeeMutation();
 
   const onSubmit = async (data: AddEmployeeFormValuesType) => {
-    const ref = firestore().collection('employees');
     try {
-      await ref.add({
-        ...data,
-        userId: user?.uid,
-      });
-
+      await addEmployee(data);
       navigation.goBack();
     } catch (err) {
       Alert.alert(

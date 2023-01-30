@@ -6,6 +6,7 @@ export const validationSchema = Yup.object().shape({
   jobPosition: Yup.string().required('Enter job position'),
   salary: Yup.string().required('Enter salary'),
   email: Yup.string().email('Invalid e-mail address').required('Enter e-mail'),
+  employmentDate: Yup.date().required('Enter employment date'),
 });
 
 export type AddEmployeeFormValuesType = Yup.InferType<typeof validationSchema>;

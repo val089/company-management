@@ -1,4 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
+import { store } from '@app/store/store';
+import { Provider } from 'react-redux';
 import { StatusBar, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -65,10 +67,12 @@ const Navigation = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <NavigationContainer>
-      {!user && <AuthStack />}
-      {user && <AuthenticatedStack />}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {!user && <AuthStack />}
+        {user && <AuthenticatedStack />}
+      </NavigationContainer>
+    </Provider>
   );
 };
 

@@ -114,12 +114,6 @@ export const CustomTextField = ({
           <Pressable style={styles.eyeIcon} onPress={onToggleVisiblilityHandler}>
             {!isPasswordVisible ? <VisibleEye /> : <VisibleOffEye />}
           </Pressable>
-          {/* <IconButton
-            _pressed={{ bg: 'transparent' }}
-            icon={!isPasswordVisible ? <VisibleEye /> : <VisibleOffEye />}
-            onPress={onToggleVisiblilityHandler}
-            alignItems="flex-end"
-          /> */}
         </View>
       )}
       {isError && <Text style={styles.textError}>{meta.error}</Text>}

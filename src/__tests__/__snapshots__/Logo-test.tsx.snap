@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly the Logo component 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#fff",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 40,
+        },
+        Array [
+          Object {
+            "lineHeight": 45,
+          },
+          Object {
+            "fontSize": 40,
+          },
+        ],
+      ]
+    }
+  >
+    Company
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#fff",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 40,
+        },
+        Array [
+          Object {
+            "lineHeight": 45,
+          },
+          Object {
+            "fontSize": 40,
+          },
+        ],
+      ]
+    }
+  >
+    Management
+  </Text>
+</View>
+`;

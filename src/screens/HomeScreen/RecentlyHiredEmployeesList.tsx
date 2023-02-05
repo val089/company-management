@@ -1,22 +1,15 @@
 import { StyleSheet, FlatList, View } from 'react-native';
-import React from 'react';
 import { IEmployeeItem } from '@app/types';
 import { RecentlyHiredEmployeesListItem } from './RecentlyHiredEmployeesListItem';
 import { Typography } from '@app/components/Typography';
-import { getDateMinusDays } from '@app/utils/getDateMinusDayes';
+import { filterRecentlyHiredEmployees } from '@app/utils/filterRecentlyHiredEmployees';
 
 interface Props {
   employees: IEmployeeItem[];
 }
 
 export const RecentlyHiredEmployeesList = ({ employees }: Props) => {
-  const recentlyHirdeEmployees = employees.filter(employee => {
-    const today = new Date();
-    const date7DaysAgo = getDateMinusDays(today, 7);
-    const employmentDate = new Date(employee.employmentDate.slice(0, 10));
-
-    return employmentDate > date7DaysAgo && employmentDate <= today;
-  });
+  const recentlyHirdeEmployees = filterRecentlyHiredEmployees(employees, 7);
 
   return (
     <View style={styles.container}>

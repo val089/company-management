@@ -1,7 +1,7 @@
 import { getDateMinusDays } from './getDateMinusDayes';
-import { IEmployeeItem } from '@app/types';
+import { Employee } from '@app/types';
 
-export const filterRecentlyHiredEmployees = (employees: IEmployeeItem[], days: number) => {
+export const filterRecentlyHiredEmployees = (employees: Employee[], days: number) => {
   const filteredData = employees.filter(employee => {
     const today = new Date();
     const date7DaysAgo = getDateMinusDays(today, days);

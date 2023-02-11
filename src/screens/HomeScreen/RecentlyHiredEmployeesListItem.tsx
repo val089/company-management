@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableOpacity, ListRenderItem, View } from 'react-native';
-import { IEmployeeItem } from '@app/types';
+import { Employee } from '@app/types';
 import { Typography } from '@app/components/Typography';
 import { GlobalStyles } from '@app/constants/styles';
 
-export const RecentlyHiredEmployeesListItem: ListRenderItem<IEmployeeItem> = itemData => {
+export const RecentlyHiredEmployeesListItem: ListRenderItem<Employee> = itemData => {
   const { item } = itemData;
   return (
     <TouchableOpacity style={styles.item}>

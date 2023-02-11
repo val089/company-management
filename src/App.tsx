@@ -11,6 +11,7 @@ import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
 import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
 import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
 import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
+import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 
 import { TabNavigation } from '@app/navigation/TabNavigation';
 
@@ -22,6 +23,7 @@ export type RootStackParamList = {
   TabNavigation: undefined;
   AddEmployee: undefined;
   EmployeeDetails: { employeeId: string };
+  TakingPhotoAndUploading: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -62,6 +64,7 @@ const AuthenticatedStack = () => {
       />
       <Stack.Screen name="AddEmployee" component={AddEmployeeScreen} />
       <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
+      <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
     </Stack.Navigator>
   );
 };

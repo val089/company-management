@@ -3,7 +3,7 @@ import { AddEmployeeForm } from './AddEmployeeForm';
 import { GlobalStyles } from '@app/constants/styles';
 import { AddEmployeeFormValuesType } from './validationSchema';
 import { RootStackNavigation } from '@app/App';
-import { useAddEmployeeMutation } from '@app/store/slices/api';
+import { useAddEmployeeMutation } from '@app/store/slices/employeesAPI';
 
 export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmployee'>) => {
   const [addEmployee] = useAddEmployeeMutation();

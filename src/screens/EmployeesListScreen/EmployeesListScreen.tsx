@@ -15,7 +15,15 @@ export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'Employe
       <FlatList
         data={employees}
         keyExtractor={item => item.id}
-        renderItem={EmployeesListItem}
+        renderItem={({ item }) => (
+          <EmployeesListItem
+            id={item.id}
+            firstName={item.firstName}
+            lastName={item.lastName}
+            jobPosition={item.jobPosition}
+            salary={item.salary}
+          />
+        )}
         contentContainerStyle={styles.list}
       />
     </View>

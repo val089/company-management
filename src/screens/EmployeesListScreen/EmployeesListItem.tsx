@@ -1,23 +1,37 @@
 import { IEmployeeItem } from '@app/types';
-import { View, StyleSheet, ListRenderItem, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Typography } from '@app/components/Typography';
 import { GlobalStyles } from '@app/constants/styles';
 
-export const EmployeesListItem: ListRenderItem<IEmployeeItem> = itemData => {
-  const { item } = itemData;
+type EmployeesListItemProps = Pick<
+  IEmployeeItem,
+  'id' | 'firstName' | 'lastName' | 'jobPosition' | 'salary'
+>;
+
+export const EmployeesListItem = ({
+  id,
+  firstName,
+  lastName,
+  jobPosition,
+  salary,
+}: EmployeesListItemProps) => {
+  const navigation = useNavigation();
   return (
-    <Pressable style={styles.item}>
+    <Pressable
+      style={styles.item}
+      onPress={() => navigation.navigate('EmployeeDetails', { employeeId: id })}>
       <View style={styles.image} />
       <View>
         <Typography type="normal" style={[styles.nameText, styles.paddingText]}>
-          {`${item.firstName} ${item.lastName}`}
+          {`${firstName} ${lastName}`}
         </Typography>
         <Typography type="small" style={styles.paddingText}>
-          {item.jobPosition}
+          {jobPosition}
         </Typography>
         <Typography type="small" style={styles.paddingText}>
           <Typography type="normal" style={styles.salaryText}>
-            {`${item.salary} `}
+            {`${salary} `}
           </Typography>
           / month
         </Typography>

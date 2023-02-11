@@ -10,6 +10,7 @@ import auth from '@react-native-firebase/auth';
 import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
 import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
 import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
+import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
 
 import { TabNavigation } from '@app/navigation/TabNavigation';
 
@@ -20,6 +21,7 @@ export type RootStackParamList = {
   EmployeesList: undefined;
   TabNavigation: undefined;
   AddEmployee: undefined;
+  EmployeeDetails: { employeeId: string };
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -59,6 +61,7 @@ const AuthenticatedStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="AddEmployee" component={AddEmployeeScreen} />
+      <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
     </Stack.Navigator>
   );
 };

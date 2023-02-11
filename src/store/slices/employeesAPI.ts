@@ -5,8 +5,8 @@ import { IEmployeeItem } from '@app/types';
 
 const ref = firestore().collection('employees');
 
-export const apiSlice = createApi({
-  reducerPath: 'api',
+export const employeesApiSlice = createApi({
+  reducerPath: 'employeesAPI',
   baseQuery: fakeBaseQuery(),
   tagTypes: ['Employees'],
   endpoints: builder => ({
@@ -50,4 +50,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useFetchEmployeesQuery, useAddEmployeeMutation } = apiSlice;
+export const { useFetchEmployeesQuery, useAddEmployeeMutation } = employeesApiSlice;

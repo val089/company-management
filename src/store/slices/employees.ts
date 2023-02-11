@@ -14,7 +14,7 @@ const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {
-    setEmployees(state, action: PayloadAction<IEmployeeItem[]>) {
+    setEmployees: (state, action: PayloadAction<IEmployeeItem[]>) => {
       if (action.payload) {
         state.employees = action.payload;
       }

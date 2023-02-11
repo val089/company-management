@@ -1,7 +1,7 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import { IEmployeeItem } from '@app/types';
+import { Employee, EmployeeOmitID } from '@app/types';
 
 const ref = firestore().collection('employees');
 
@@ -15,12 +15,12 @@ export const employeesApiSlice = createApi({
         try {
           const userId = auth().currentUser?.uid;
           const allEmployees = await ref.where('userId', '==', userId).get();
-          const employeesList = [] as IEmployeeItem[];
+          const employeesList = [] as Employee[];
           for (const doc of allEmployees.docs) {
             employeesList.push({
               id: doc.id,
               ...doc.data(),
-            } as IEmployeeItem);
+            } as Employee);
           }
           return { data: employeesList };
         } catch (error) {
@@ -30,16 +30,9 @@ export const employeesApiSlice = createApi({
       providesTags: ['Employees'],
     }),
     addEmployee: builder.mutation({
-      queryFn: async employee => {
+      queryFn: async (employee: EmployeeOmitID) => {
         try {
-          const userId = auth().currentUser?.uid;
-          await ref.add({
-            ...employee,
-            userId,
-            // createdAt: new Date(), // błąd z non-serializable values
-            createdAt: new Date().toISOString(),
-            employmentDate: employee.employmentDate.toISOString(),
-          } as IEmployeeItem);
+          await ref.add(employee);
           return { data: 'ok' };
         } catch (error) {
           return { error };
@@ -47,7 +40,18 @@ export const employeesApiSlice = createApi({
       },
       invalidatesTags: ['Employees'],
     }),
+    updateEmployee: builder.mutation({
+      queryFn: async (employee: Employee) => {
+        try {
+          await ref.doc(employee.id).update(employee);
+          return { data: 'ok' };
+        } catch (error) {
+          return { error };
+        }
+      },
+    }),
   }),
 });
 
-export const { useFetchEmployeesQuery, useAddEmployeeMutation } = employeesApiSlice;
+export const { useFetchEmployeesQuery, useAddEmployeeMutation, useUpdateEmployeeMutation } =
+  employeesApiSlice;

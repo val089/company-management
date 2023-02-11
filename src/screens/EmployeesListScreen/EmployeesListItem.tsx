@@ -1,11 +1,11 @@
-import { IEmployeeItem } from '@app/types';
+import { Employee } from '@app/types';
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, Pressable } from 'react-native';
 import { Typography } from '@app/components/Typography';
 import { GlobalStyles } from '@app/constants/styles';
 
 type EmployeesListItemProps = Pick<
-  IEmployeeItem,
+  Employee,
   'id' | 'firstName' | 'lastName' | 'jobPosition' | 'salary'
 >;
 

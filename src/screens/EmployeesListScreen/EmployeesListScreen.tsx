@@ -7,6 +7,8 @@ import { EmployeesListItem } from './EmployeesListItem';
 export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'EmployeesList'>) => {
   const employees = useAppSelector(state => state.employees.employees);
 
+  console.log(employees);
+
   return (
     <View style={styles.screen}>
       <Pressable onPress={() => navigation.navigate('AddEmployee')}>

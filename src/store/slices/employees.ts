@@ -1,9 +1,9 @@
-import { IEmployeeItem } from '@app/types';
+import { Employee } from '@app/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 type EmployeesState = {
-  employees: IEmployeeItem[];
+  employees: Employee[];
 };
 
 const initialState: EmployeesState = {
@@ -14,7 +14,7 @@ const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {
-    setEmployees: (state, action: PayloadAction<IEmployeeItem[]>) => {
+    setEmployees: (state, action: PayloadAction<Employee[]>) => {
       if (action.payload) {
         state.employees = action.payload;
       }

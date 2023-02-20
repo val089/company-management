@@ -1,4 +1,4 @@
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '@app/App';
 
 // https://reactnavigation.org/docs/typescript/#specifying-default-types-for-usenavigation-link-ref-etc
 declare global {

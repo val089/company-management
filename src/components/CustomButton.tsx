@@ -1,17 +1,28 @@
 import { Pressable, StyleProp, StyleSheet, ViewStyle, PressableProps, View } from 'react-native';
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@app/constants/styles';
 
 interface CustomButtonProps extends PressableProps {
   style?: StyleProp<ViewStyle>;
+  onPress: () => void;
 }
 
-export const CustomButton = ({ children, style, ...restProps }: CustomButtonProps) => {
+export const CustomButton = ({
+  children,
+  onPress,
+  style,
+  disabled,
+  ...restProps
+}: CustomButtonProps) => {
   return (
     <View style={[styles.buttonContainer, style]}>
       <Pressable
-        style={styles.button}
-        {...restProps}
-        android_ripple={{ color: GlobalStyles.colors.blue100 }}>
+        style={[
+          styles.button,
+          { backgroundColor: disabled ? GlobalStyles.colors.grey700 : GlobalStyles.colors.blue100 },
+        ]}
+        onPress={onPress}
+        android_ripple={{ color: GlobalStyles.colors.blue100 }}
+        {...restProps}>
         {children}
       </Pressable>
     </View>
@@ -28,6 +39,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
-    backgroundColor: GlobalStyles.colors.secondary100,
   },
 });

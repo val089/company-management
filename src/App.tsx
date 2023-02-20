@@ -1,14 +1,19 @@
 import { useContext, useState, useEffect } from 'react';
+import { store } from '@app/store/store';
+import { Provider } from 'react-redux';
 import { StatusBar, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthContextProvider, AuthContext } from './src/context/auth-context';
+import { AuthContextProvider, AuthContext } from '@app/context/auth-context';
 import auth from '@react-native-firebase/auth';
 
-import { LoginScreen } from './src/screens/LoginScreen';
-import { SignUpScreen } from './src/screens/SignUpScreen';
+import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
+import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
+import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
+import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
+import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 
-import { TabNavigation } from './src/navigation/TabNavigation';
+import { TabNavigation } from '@app/navigation/TabNavigation';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -16,6 +21,9 @@ export type RootStackParamList = {
   Home: undefined;
   EmployeesList: undefined;
   TabNavigation: undefined;
+  AddEmployee: undefined;
+  EmployeeDetails: { employeeId: string };
+  TakingPhotoAndUploading: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -54,6 +62,9 @@ const AuthenticatedStack = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="AddEmployee" component={AddEmployeeScreen} />
+      <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
+      <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
     </Stack.Navigator>
   );
 };
@@ -62,10 +73,12 @@ const Navigation = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <NavigationContainer>
-      {!user && <AuthStack />}
-      {user && <AuthenticatedStack />}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {!user && <AuthStack />}
+        {user && <AuthenticatedStack />}
+      </NavigationContainer>
+    </Provider>
   );
 };
 

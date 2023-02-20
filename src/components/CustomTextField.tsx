@@ -10,9 +10,9 @@ import {
   Text,
   Pressable,
 } from 'react-native';
-import VisibleEye from '../../assets/icons/VisibleEye';
-import VisibleOffEye from '../../assets/icons/VisibleOffEye';
-import { GlobalStyles } from '../../constants/styles';
+import VisibleEye from '@app/assets/icons/VisibleEye';
+import VisibleOffEye from '@app/assets/icons/VisibleOffEye';
+import { GlobalStyles } from '@app/constants/styles';
 
 type TextFieldProps = ComponentProps<typeof TextInput> & {
   name: string;
@@ -114,12 +114,6 @@ export const CustomTextField = ({
           <Pressable style={styles.eyeIcon} onPress={onToggleVisiblilityHandler}>
             {!isPasswordVisible ? <VisibleEye /> : <VisibleOffEye />}
           </Pressable>
-          {/* <IconButton
-            _pressed={{ bg: 'transparent' }}
-            icon={!isPasswordVisible ? <VisibleEye /> : <VisibleOffEye />}
-            onPress={onToggleVisiblilityHandler}
-            alignItems="flex-end"
-          /> */}
         </View>
       )}
       {isError && <Text style={styles.textError}>{meta.error}</Text>}

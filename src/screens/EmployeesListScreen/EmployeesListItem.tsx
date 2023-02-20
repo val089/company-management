@@ -1,9 +1,9 @@
 import { Employee } from '@app/types';
 import { useNavigation } from '@react-navigation/native';
-import { View, StyleSheet, Pressable, Image } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Typography } from '@app/components/Typography';
 import { GlobalStyles } from '@app/constants/styles';
-import avatarImg from '@app/assets/images/avatar.png';
+import { Avatar } from '@app/components/Avatar';
 
 type EmployeesListItemProps = Pick<
   Employee,
@@ -23,13 +23,7 @@ export const EmployeesListItem = ({
     <Pressable
       style={styles.item}
       onPress={() => navigation.navigate('EmployeeDetails', { employeeId: id })}>
-      {imageUri ? (
-        <View style={styles.imgContainer}>
-          <Image source={{ uri: imageUri }} style={styles.image} />
-        </View>
-      ) : (
-        <Image source={avatarImg} style={styles.image} />
-      )}
+      <Avatar imageUri={imageUri} />
       <View>
         <Typography type="normal" style={[styles.nameText, styles.paddingText]}>
           {`${firstName} ${lastName}`}

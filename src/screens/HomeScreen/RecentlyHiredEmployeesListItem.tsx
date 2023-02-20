@@ -1,13 +1,14 @@
-import { StyleSheet, TouchableOpacity, ListRenderItem, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, ListRenderItem } from 'react-native';
 import { Employee } from '@app/types';
 import { Typography } from '@app/components/Typography';
 import { GlobalStyles } from '@app/constants/styles';
+import { Avatar } from '@app/components/Avatar';
 
 export const RecentlyHiredEmployeesListItem: ListRenderItem<Employee> = itemData => {
   const { item } = itemData;
   return (
     <TouchableOpacity style={styles.item}>
-      <View style={styles.image} />
+      <Avatar imageUri={item.imageUri} />
       <Typography type="normal" style={styles.nameText}>
         {`${item.firstName} ${item.lastName}`}
       </Typography>
@@ -29,13 +30,6 @@ const styles = StyleSheet.create({
     height: 200,
     overflow: 'hidden',
     justifyContent: 'space-around',
-  },
-  image: {
-    width: 80,
-    height: 80,
-    backgroundColor: '#ddd',
-    borderRadius: 50,
-    paddingRight: 20,
   },
   nameText: {
     textAlign: 'center',

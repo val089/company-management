@@ -7,8 +7,6 @@ import { EmployeesListItem } from './EmployeesListItem';
 export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'EmployeesList'>) => {
   const employees = useAppSelector(state => state.employees.employees);
 
-  console.log(employees);
-
   return (
     <View style={styles.screen}>
       <Pressable onPress={() => navigation.navigate('AddEmployee')}>
@@ -24,6 +22,7 @@ export const EmployeesListScreen = ({ navigation }: RootStackNavigation<'Employe
             lastName={item.lastName}
             jobPosition={item.jobPosition}
             salary={item.salary}
+            imageUri={item.imageUri}
           />
         )}
         contentContainerStyle={styles.list}

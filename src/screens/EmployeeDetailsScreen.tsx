@@ -1,13 +1,11 @@
 import { RootStackNavigation } from '@app/App';
 import { useAppSelector } from '@app/hooks/reduxHooks';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { formatISOstring } from '@app/utils/formatISOstring';
+import { Avatar } from '@app/components/Avatar';
 
-export const EmployeeDetailsScreen = ({
-  route,
-  navigation,
-}: RootStackNavigation<'EmployeeDetails'>) => {
+export const EmployeeDetailsScreen = ({ route }: RootStackNavigation<'EmployeeDetails'>) => {
   const { employeeId } = route.params;
   const employees = useAppSelector(state => state.employees.employees);
 
@@ -21,11 +19,9 @@ export const EmployeeDetailsScreen = ({
     <SafeAreaView style={styles.screen}>
       <ScrollView>
         <View style={styles.mainInfo}>
-          <TouchableOpacity onPress={() => navigation.navigate('TakingPhotoAndUploading')}>
-            <View style={styles.imageContainer}>
-              <View style={styles.image} />
-            </View>
-          </TouchableOpacity>
+          <View style={styles.imageContainer}>
+            <Avatar imageUri={employeeDetails.imageUri} />
+          </View>
           <View style={styles.mainInfoDescription}>
             <Text>{`name: ${employeeDetails.firstName} ${employeeDetails.lastName}`}</Text>
             <Text>{`Job position: ${employeeDetails.jobPosition}`}</Text>
@@ -45,12 +41,6 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     paddingRight: 20,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#ddd',
-    borderRadius: 50,
   },
   mainInfo: {
     flexDirection: 'row',

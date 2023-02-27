@@ -24,6 +24,8 @@ export type RootStackParamList = {
   AddEmployee: undefined;
   EmployeeDetails: { employeeId: string };
   TakingPhotoAndUploading: undefined;
+  Test: undefined;
+  Expanses: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<

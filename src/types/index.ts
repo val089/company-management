@@ -15,3 +15,14 @@ export interface Employee {
 }
 
 export type EmployeeOmitID = Omit<Employee, 'id'>;
+
+export type ExpenseType = 'income' | 'expense';
+export interface Expense {
+  type: ExpenseType;
+  category: string;
+  createdAt: string;
+  amount: number;
+  userId: string;
+}
+
+export type ExpenseOmitID = Omit<Expense, 'id'>;

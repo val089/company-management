@@ -5,7 +5,7 @@ import { RootStackParamList } from '@app/App';
 import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
 // import { TestScreen } from '@app/screens/TestScreen';
-import { ExpansesScreen } from '@app/screens/ExpansesScreen';
+import { ExpensesScreen } from '@app/screens/ExpensesScreen';
 
 import { HomeIcon } from '@app/assets/icons/Menu/HomeIcon';
 import { GlobalStyles } from '@app/constants/styles';
@@ -103,11 +103,11 @@ export const TabNavigation = () => {
           })}
         /> */}
         <Tab.Screen
-          name="Expanses"
-          component={ExpansesScreen}
+          name="Expenses"
+          component={ExpensesScreen}
           options={{
             tabBarLabel: ({ focused }) =>
-              focused && <Typography type="tabMenu">Expanses</Typography>,
+              focused && <Typography type="tabMenu">Expenses</Typography>,
             tabBarIcon: ({ focused }) => (
               <View>
                 <CashIcon

@@ -5,7 +5,7 @@ import { AddEmployeeForm } from './AddEmployeeForm';
 import { GlobalStyles } from '@app/constants/styles';
 import { AddEmployeeFormValuesType } from './validationSchema';
 import { RootStackNavigation } from '@app/App';
-import { useAddEmployeeMutation } from '@app/store/slices/employeesAPI';
+import { useAddEmployeeMutation } from '@app/store/slices/api';
 import { AddImageModal } from '@app/components/AddImageModal';
 import { useModal } from '@app/hooks/useModal';
 import { useCamera } from '@app/hooks/useCamera';

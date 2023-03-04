@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Text, SafeAreaView, Button, StyleSheet } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
-import { employeesApiSlice, useFetchEmployeesQuery } from '@app/store/slices/employeesAPI';
+import { apiSlice, useFetchEmployeesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
 import { setEmployees } from '@app/store/slices/employees';
 import { LoadingOverlay } from '@app/components/LoadingOverlay';
@@ -13,7 +13,7 @@ export const HomeScreen = () => {
   const { data: employees, isLoading } = useFetchEmployeesQuery({});
 
   const logoutHandler = () => {
-    dispatch(employeesApiSlice.util.resetApiState());
+    dispatch(apiSlice.util.resetApiState());
     logout();
   };
 

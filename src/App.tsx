@@ -93,8 +93,12 @@ const Root = () => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(user => {
-      authenticate(user!);
-      if (initializing) setInitializing(false);
+      if (user) {
+        authenticate(user);
+      }
+      if (initializing) {
+        setInitializing(false);
+      }
     });
     return subscriber;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,7 +114,7 @@ const Root = () => {
 const App = () => {
   return (
     <AuthContextProvider>
-      <StatusBar />
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <Root />
     </AuthContextProvider>
   );

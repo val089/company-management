@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Text, SafeAreaView, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, Button, StyleSheet } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
 import { apiSlice, useFetchEmployeesQuery } from '@app/store/slices/api';
@@ -31,7 +31,6 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <Text>Welcome {user.email}</Text>
       <Button title="Logout" onPress={logoutHandler} />
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
     </SafeAreaView>
@@ -41,5 +40,6 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    backgroundColor: '#fff',
   },
 });

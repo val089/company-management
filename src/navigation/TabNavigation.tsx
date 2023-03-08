@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '@app/App';
 import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
-// import { TestScreen } from '@app/screens/TestScreen';
 import { ExpensesScreen } from '@app/screens/ExpensesScreen';
 
 import { HomeIcon } from '@app/assets/icons/Menu/HomeIcon';
@@ -12,6 +11,10 @@ import { GlobalStyles } from '@app/constants/styles';
 import { ListIcon } from '@app/assets/icons/Menu/ListIcon';
 import { Typography } from '@app/components/Typography';
 import { CashIcon } from '@app/assets/icons/Menu/CashIcon';
+import { HomeHeader } from '@app/components/HomeHeader';
+import { BasicHeader } from '@app/components/BasicHeader';
+import { RootStackNavigation } from '@app/App';
+// import { TestScreen } from '@app/screens/TestScreen';
 // import { PlusIcon } from '@app/assets/icons/Menu/PlusIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -30,8 +33,7 @@ export const TabNavigation = () => {
         initialRouteName="Home"
         screenOptions={{
           tabBarStyle: {
-            // backgroundColor: GlobalStyles.colors.primary100,
-            backgroundColor: '#fff',
+            backgroundColor: GlobalStyles.colors.white,
             position: 'absolute',
             bottom: 20,
             marginHorizontal: 20,
@@ -46,30 +48,32 @@ export const TabNavigation = () => {
           },
           tabBarShowLabel: false,
         }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarLabel: ({ focused }) => focused && <Typography type="tabMenu">HOME</Typography>,
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <HomeIcon
-                  fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
-                />
-              </View>
-            ),
-          }}
-          listeners={{
-            tabPress: () => {
-              Animated.spring(tabOffsetValue, {
-                toValue: 0,
-                useNativeDriver: true,
-              }).start();
-            },
-          }}
-        />
-        {/* TODO: consider to use it */}
-        {/* <Tab.Screen
+        <Tab.Group>
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              tabBarLabel: ({ focused }) => focused && <Typography type="tabMenu">HOME</Typography>,
+              tabBarIcon: ({ focused }) => (
+                <View>
+                  <HomeIcon
+                    fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
+                  />
+                </View>
+              ),
+              header: () => <HomeHeader />,
+            }}
+            listeners={{
+              tabPress: () => {
+                Animated.spring(tabOffsetValue, {
+                  toValue: 0,
+                  useNativeDriver: true,
+                }).start();
+              },
+            }}
+          />
+          {/* TODO: consider to use it */}
+          {/* <Tab.Screen
           name="Test"
           component={TestScreen}
           options={{
@@ -102,52 +106,65 @@ export const TabNavigation = () => {
             },
           })}
         /> */}
-        <Tab.Screen
-          name="Expenses"
-          component={ExpensesScreen}
-          options={{
-            tabBarLabel: ({ focused }) =>
-              focused && <Typography type="tabMenu">Expenses</Typography>,
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <CashIcon
-                  fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
+          <Tab.Screen
+            name="Expenses"
+            component={ExpensesScreen}
+            options={({ navigation }: RootStackNavigation<'Expenses'>) => ({
+              tabBarLabel: ({ focused }) =>
+                focused && <Typography type="tabMenu">Expenses</Typography>,
+              tabBarIcon: ({ focused }) => (
+                <View>
+                  <CashIcon
+                    fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
+                  />
+                </View>
+              ),
+              header: () => (
+                <BasicHeader
+                  title="Expenses"
+                  onPlusPress={() => navigation.navigate('AddExpense')}
                 />
-              </View>
-            ),
-          }}
-          listeners={{
-            tabPress: () => {
-              Animated.spring(tabOffsetValue, {
-                toValue: getWidth() * 1 - 15,
-                useNativeDriver: true,
-              }).start();
-            },
-          }}
-        />
-        <Tab.Screen
-          name="EmployeesList"
-          component={EmployeesListScreen}
-          options={{
-            tabBarLabel: ({ focused }) =>
-              focused && <Typography type="tabMenu">EMPLOYEES LIST</Typography>,
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <ListIcon
-                  fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
+              ),
+            })}
+            listeners={{
+              tabPress: () => {
+                Animated.spring(tabOffsetValue, {
+                  toValue: getWidth() * 1 - 15,
+                  useNativeDriver: true,
+                }).start();
+              },
+            }}
+          />
+          <Tab.Screen
+            name="EmployeesList"
+            component={EmployeesListScreen}
+            options={({ navigation }: RootStackNavigation<'EmployeesList'>) => ({
+              tabBarLabel: ({ focused }) =>
+                focused && <Typography type="tabMenu">EMPLOYEES LIST</Typography>,
+              tabBarIcon: ({ focused }) => (
+                <View>
+                  <ListIcon
+                    fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
+                  />
+                </View>
+              ),
+              header: () => (
+                <BasicHeader
+                  title="Employees List"
+                  onPlusPress={() => navigation.navigate('AddEmployee')}
                 />
-              </View>
-            ),
-          }}
-          listeners={{
-            tabPress: () => {
-              Animated.spring(tabOffsetValue, {
-                toValue: getWidth() * 2 - 30,
-                useNativeDriver: true,
-              }).start();
-            },
-          }}
-        />
+              ),
+            })}
+            listeners={{
+              tabPress: () => {
+                Animated.spring(tabOffsetValue, {
+                  toValue: getWidth() * 2 - 30,
+                  useNativeDriver: true,
+                }).start();
+              },
+            }}
+          />
+        </Tab.Group>
       </Tab.Navigator>
 
       <Animated.View

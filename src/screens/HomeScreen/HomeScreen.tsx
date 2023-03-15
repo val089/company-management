@@ -6,6 +6,7 @@ import { apiSlice, useFetchEmployeesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
 import { setEmployees } from '@app/store/slices/employees';
 import { LoadingOverlay } from '@app/components/LoadingOverlay';
+import { Chart } from '@app/components/Chart';
 
 export const HomeScreen = () => {
   const { user, logout } = useContext(AuthContext);
@@ -32,6 +33,7 @@ export const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.screen}>
       <Button title="Logout" onPress={logoutHandler} />
+      <Chart />
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
     </SafeAreaView>
   );

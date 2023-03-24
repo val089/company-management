@@ -2,8 +2,8 @@ import React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 const VisibleEye: React.FC<SvgProps> = ({
-  width = '24',
-  height = '24',
+  width = '28',
+  height = '28',
   viewBox = '0 0 48 48',
   ...restProps
 }) => (

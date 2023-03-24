@@ -25,7 +25,6 @@ export type RootStackParamList = {
   AddEmployee: undefined;
   EmployeeDetails: { employeeId: string };
   TakingPhotoAndUploading: undefined;
-  Test: undefined;
   Expenses: undefined;
   AddExpense: undefined;
 };

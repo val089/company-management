@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { AddExpenseForm } from './AddExpenseForm';
 import { AddExpenseFormValuesType } from './validationSchema';
@@ -32,12 +32,23 @@ export const AddExpenseScreen = () => {
   };
 
   if (isLoading) {
-    return <LoadingOverlay message="New expense is added" />;
+    return <LoadingOverlay message="Adding new expense" />;
   }
 
   return (
-    <View>
-      <AddExpenseForm onSubmit={onSubmit} />
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.screen}>
+          <AddExpenseForm onSubmit={onSubmit} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    paddingHorizontal: 16,
+  },
+});

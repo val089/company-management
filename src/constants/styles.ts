@@ -8,6 +8,7 @@ export const GlobalStyles = {
     white: '#fff',
     green100: '#2bb879',
     blue100: '#2196f3',
+    black: '#000',
   },
   fonts: {
     poppinsRegular: 'Poppins-Regular',

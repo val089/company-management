@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Formik } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { AddExpenseFormValuesType, validationSchema } from './validationSchema';
-import { CustomTextField } from '@app/components/CustomTextField';
 import { Typography } from '@app/components/Typography';
 import { CustomButton } from '@app/components/CustomButton';
+import { Input } from '@app/components/Input';
 
 const initialValues = {
   amount: '',
@@ -18,6 +19,16 @@ interface AddExpenseFormProps {
 }
 
 export const AddExpenseForm = ({ onSubmit }: AddExpenseFormProps) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<AddExpenseFormValuesType>({
+    defaultValues: initialValues,
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
+
   const onSubmitHandler = useCallback(
     async (data: AddExpenseFormValuesType) => {
       await onSubmit(data);
@@ -26,61 +37,32 @@ export const AddExpenseForm = ({ onSubmit }: AddExpenseFormProps) => {
   );
 
   return (
-    <Formik
-      validateOnChange
-      validateOnBlur
-      validationSchema={validationSchema}
-      initialValues={initialValues as AddExpenseFormValuesType}
-      onSubmit={onSubmitHandler}>
-      {({ handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-        <>
-          <View>
-            <View style={styles.inputGroup}>
-              <CustomTextField
-                name="amount"
-                label="Amount"
-                onChangeText={handleChange('amount')}
-                onBlur={handleBlur('amount')}
-                keyboardType="number-pad"
-              />
-            </View>
+    <>
+      <Input
+        label="Amount"
+        name="amount"
+        control={control}
+        keyboardType="number-pad"
+        style={styles.input}
+      />
+      <Input label="Type" name="type" control={control} style={styles.input} />
+      <Input label="Category" name="category" control={control} style={styles.input} />
 
-            <View style={styles.inputGroup}>
-              <CustomTextField
-                name="type"
-                label="Type"
-                onChangeText={handleChange('type')}
-                onBlur={handleBlur('type')}
-              />
-            </View>
-
-            <View style={styles.inputGroup}>
-              <CustomTextField
-                name="category"
-                label="Category"
-                onChangeText={handleChange('category')}
-                onBlur={handleBlur('category')}
-              />
-            </View>
-
-            <View style={styles.buttonsContainer}>
-              <CustomButton
-                onPress={() => handleSubmit()}
-                style={styles.button}
-                disabled={isSubmitting}>
-                <Typography type="button">ADD</Typography>
-              </CustomButton>
-            </View>
-          </View>
-        </>
-      )}
-    </Formik>
+      <View style={styles.buttonsContainer}>
+        <CustomButton
+          onPress={handleSubmit(onSubmitHandler)}
+          style={styles.button}
+          disabled={isSubmitting}>
+          <Typography type="button">ADD</Typography>
+        </CustomButton>
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  inputGroup: {
-    paddingTop: 30,
+  input: {
+    marginTop: 16,
   },
   buttonsContainer: {
     paddingTop: 30,

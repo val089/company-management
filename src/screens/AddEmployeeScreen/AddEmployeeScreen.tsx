@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { View, StyleSheet, Alert, Pressable } from 'react-native';
+import { View, StyleSheet, Alert, Pressable, SafeAreaView, ScrollView } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { AddEmployeeForm } from './AddEmployeeForm';
 import { GlobalStyles } from '@app/constants/styles';
@@ -41,26 +41,30 @@ export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmploy
   };
 
   return (
-    <View style={styles.screen}>
-      <Pressable style={styles.imgContainer} onPress={showModal}>
-        <Avatar imageUri={imageUri} />
-      </Pressable>
-      <AddEmployeeForm onSubmit={onSubmit} />
-      <AddImageModal
-        isModalOpen={isModalOpen}
-        hideModal={hideModal}
-        choosePhoto={choosePhoto}
-        openCamera={openCamera}
-      />
-    </View>
+    <SafeAreaView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.screen}>
+          <Pressable style={styles.imgContainer} onPress={showModal}>
+            <Avatar imageUri={imageUri} />
+          </Pressable>
+          <AddEmployeeForm onSubmit={onSubmit} />
+          <AddImageModal
+            isModalOpen={isModalOpen}
+            hideModal={hideModal}
+            choosePhoto={choosePhoto}
+            openCamera={openCamera}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: GlobalStyles.colors.primary100,
     flex: 1,
     padding: 16,
+    backgroundColor: GlobalStyles.colors.white,
   },
   imgContainer: {
     justifyContent: 'center',

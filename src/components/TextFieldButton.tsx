@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     left: 15,
     top: -10,
     paddingHorizontal: 8,
-    backgroundColor: GlobalStyles.colors.primary100,
+    backgroundColor: GlobalStyles.colors.white,
   },
   label: {
     color: GlobalStyles.colors.grey700,

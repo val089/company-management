@@ -2,14 +2,13 @@ import { useContext } from 'react';
 import { View, StyleSheet, Alert, Pressable, SafeAreaView, ScrollView } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { AddEmployeeForm } from './AddEmployeeForm';
-import { GlobalStyles } from '@app/constants/styles';
 import { AddEmployeeFormValuesType } from './validationSchema';
 import { RootStackNavigation } from '@app/App';
 import { useAddEmployeeMutation } from '@app/store/slices/api';
-import { AddImageModal } from '@app/components/AddImageModal';
+import { AddImageModal, Avatar } from '@app/components';
 import { useModal } from '@app/hooks/useModal';
 import { useCamera } from '@app/hooks/useCamera';
-import { Avatar } from '@app/components/Avatar';
+import { bgColor } from '@app/constants/styles';
 
 export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmployee'>) => {
   const { isModalOpen, showModal, hideModal } = useModal();
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 16,
-    backgroundColor: GlobalStyles.colors.white,
+    backgroundColor: bgColor,
   },
   imgContainer: {
     justifyContent: 'center',

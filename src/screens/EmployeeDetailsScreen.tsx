@@ -3,7 +3,7 @@ import { useAppSelector } from '@app/hooks/reduxHooks';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { formatISOstring } from '@app/utils/formatISOstring';
-import { Avatar } from '@app/components/Avatar';
+import { Avatar } from '@app/components';
 
 export const EmployeeDetailsScreen = ({ route }: RootStackNavigation<'EmployeeDetails'>) => {
   const { employeeId } = route.params;

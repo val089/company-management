@@ -3,8 +3,8 @@ import { TextInput, Text, View, StyleSheet, TextInputProps, Pressable } from 're
 import { GlobalStyles } from '@app/constants/styles';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 
-import VisibleEye from '@app/assets/icons/VisibleEye';
-import VisibleOffEye from '@app/assets/icons/VisibleOffEye';
+import { VisibleEyeIcon, VisibleOffEyeIcon } from '@app/assets/icons';
+import { Typography } from './Typography';
 
 interface InputProps<FormData extends FieldValues> extends UseControllerProps<FormData> {
   label: string;
@@ -47,7 +47,7 @@ export const Input = <FormData extends FieldValues>({
 
   return (
     <View style={style}>
-      <Text>{label}</Text>
+      <Typography type="small">{label}</Typography>
       <TextInput
         style={[styles.input, { borderColor: inputBorderColor }]}
         onBlur={() => {
@@ -64,7 +64,7 @@ export const Input = <FormData extends FieldValues>({
       {type === 'password' && (
         <View style={styles.eyeIcon}>
           <Pressable onPress={() => setIsPasswordVisible(prev => !prev)}>
-            {!isPasswordVisible ? <VisibleEye /> : <VisibleOffEye />}
+            {!isPasswordVisible ? <VisibleOffEyeIcon /> : <VisibleEyeIcon />}
           </Pressable>
         </View>
       )}

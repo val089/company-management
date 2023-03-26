@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { CustomButton } from '@app/components/CustomButton';
+import { CustomButton } from '@app/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const TakingPhotoAndUploadingScreen = () => {

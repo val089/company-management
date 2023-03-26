@@ -1,9 +1,8 @@
 import { Employee } from '@app/types';
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, Pressable } from 'react-native';
-import { Typography } from '@app/components/Typography';
-import { GlobalStyles } from '@app/constants/styles';
-import { Avatar } from '@app/components/Avatar';
+import { Typography, Avatar } from '@app/components';
+import { bgColor } from '@app/constants/styles';
 
 type EmployeesListItemProps = Pick<
   Employee,
@@ -33,7 +32,7 @@ export const EmployeesListItem = ({
         </Typography>
         <Typography type="small" style={styles.paddingText}>
           <Typography type="normal" style={styles.salaryText}>
-            {`${salary} `}
+            {`${salary} zł`}
           </Typography>
           / month
         </Typography>
@@ -44,7 +43,7 @@ export const EmployeesListItem = ({
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#fff',
+    backgroundColor: bgColor,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 20,
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   salaryText: {
-    color: GlobalStyles.colors.blue100,
+    fontWeight: 'bold',
   },
   imgContainer: {
     overflow: 'hidden',

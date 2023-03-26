@@ -1,22 +1,17 @@
 import { useContext, useEffect } from 'react';
-import { SafeAreaView, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { AuthContext } from '@app/context/auth-context';
 import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
-import { apiSlice, useFetchEmployeesQuery } from '@app/store/slices/api';
+import { useFetchEmployeesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
 import { setEmployees } from '@app/store/slices/employees';
-import { LoadingOverlay } from '@app/components/LoadingOverlay';
-import { Chart } from '@app/components/Chart';
+import { Chart, LoadingOverlay } from '@app/components';
+import { bgColor } from '@app/constants/styles';
 
 export const HomeScreen = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
   const { data: employees, isLoading } = useFetchEmployeesQuery({});
-
-  const logoutHandler = () => {
-    dispatch(apiSlice.util.resetApiState());
-    logout();
-  };
 
   useEffect(() => {
     if (employees) {
@@ -32,7 +27,6 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <Button title="Logout" onPress={logoutHandler} />
       <Chart />
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
     </SafeAreaView>
@@ -42,6 +36,6 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: bgColor,
   },
 });

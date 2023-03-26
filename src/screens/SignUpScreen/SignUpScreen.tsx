@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { GlobalStyles } from '@app/constants/styles';
 
 import { SignUpForm } from './SignUpForm';
-import { LoadingOverlay } from '@app/components/LoadingOverlay';
+import { LoadingOverlay } from '@app/components';
 
 import { createUser } from '@app/utils/auth';
 

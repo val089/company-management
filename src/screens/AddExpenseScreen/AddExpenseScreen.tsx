@@ -4,8 +4,9 @@ import { AuthContext } from '@app/context/auth-context';
 import { AddExpenseForm } from './AddExpenseForm';
 import { AddExpenseFormValuesType } from './validationSchema';
 import { useAddExpenseMutation } from '@app/store/slices/api';
-import { LoadingOverlay } from '@app/components/LoadingOverlay';
+import { LoadingOverlay } from '@app/components';
 import { ExpenseType } from '@app/types';
+import { bgColor } from '@app/constants/styles';
 
 export const AddExpenseScreen = () => {
   const { user } = useContext(AuthContext);
@@ -36,9 +37,9 @@ export const AddExpenseScreen = () => {
   }
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
+      <ScrollView style={[styles.screen, styles.innerScreen]}>
+        <View>
           <AddExpenseForm onSubmit={onSubmit} />
         </View>
       </ScrollView>
@@ -49,6 +50,9 @@ export const AddExpenseScreen = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+  },
+  innerScreen: {
     paddingHorizontal: 16,
+    backgroundColor: bgColor,
   },
 });

@@ -5,10 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { LoginFormValuesType, validationSchema } from './validationSchema';
-import { CustomButton } from '@app/components/CustomButton';
-import { Typography } from '@app/components/Typography';
-
-import { Input } from '@app/components/Input';
+import { CustomButton, Typography, Input } from '@app/components';
 
 const initialValues = {
   email: '',

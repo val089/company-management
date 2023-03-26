@@ -6,16 +6,17 @@ import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
 import { ExpensesScreen } from '@app/screens/ExpensesScreen';
 
-import { HomeIcon } from '@app/assets/icons/Menu/HomeIcon';
+import { HomeIcon } from '@app/assets/icons/HomeIcon';
 import { GlobalStyles } from '@app/constants/styles';
-import { ListIcon } from '@app/assets/icons/Menu/ListIcon';
+import { ListIcon } from '@app/assets/icons/ListIcon';
 import { Typography } from '@app/components/Typography';
-import { CashIcon } from '@app/assets/icons/Menu/CashIcon';
+import { CashIcon } from '@app/assets/icons/CashIcon';
 import { HomeHeader } from '@app/components/HomeHeader';
 import { BasicHeader } from '@app/components/BasicHeader';
 import { RootStackNavigation } from '@app/App';
+import { bgColor } from '@app/constants/styles';
 // import { TestScreen } from '@app/screens/TestScreen';
-// import { PlusIcon } from '@app/assets/icons/Menu/PlusIcon';
+// import { PlusIcon } from '@app/assets/icons/PlusIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -33,7 +34,7 @@ export const TabNavigation = () => {
         initialRouteName="Home"
         screenOptions={{
           tabBarStyle: {
-            backgroundColor: GlobalStyles.colors.white,
+            backgroundColor: bgColor,
             position: 'absolute',
             bottom: 20,
             marginHorizontal: 20,
@@ -123,6 +124,7 @@ export const TabNavigation = () => {
                 <BasicHeader
                   title="Expenses"
                   onPlusPress={() => navigation.navigate('AddExpense')}
+                  isBackIcon={false}
                 />
               ),
             })}
@@ -152,6 +154,7 @@ export const TabNavigation = () => {
                 <BasicHeader
                   title="Employees List"
                   onPlusPress={() => navigation.navigate('AddEmployee')}
+                  isBackIcon={false}
                 />
               ),
             })}

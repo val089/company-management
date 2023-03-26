@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleProp, TextStyle, Text, TextProps } from 'react-native';
-import { GlobalStyles } from '@app/constants/styles';
+import { StyleProp, TextStyle, Text, TextProps, Appearance } from 'react-native';
+import { GlobalStyles, fontColor } from '@app/constants/styles';
+
+const colorScheme = Appearance.getColorScheme();
 
 export type TypographyType = 'logoText' | 'button' | 'tabMenu' | 'normal' | 'small' | 'large';
 
@@ -29,10 +31,12 @@ export const Typography = ({ type, style = null, children, ...restProps }: Typog
     normal: {
       fontSize: 16,
       fontFamily: GlobalStyles.fonts.poppinsRegular,
+      color: fontColor,
     },
     small: {
       fontSize: 13,
       fontFamily: GlobalStyles.fonts.poppinsRegular,
+      color: colorScheme === 'dark' ? GlobalStyles.colors.white : GlobalStyles.colors.black,
     },
     large: {
       fontSize: 24,

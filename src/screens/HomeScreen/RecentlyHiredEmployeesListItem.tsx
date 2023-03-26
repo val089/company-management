@@ -1,8 +1,7 @@
 import { StyleSheet, TouchableOpacity, ListRenderItem } from 'react-native';
 import { Employee } from '@app/types';
-import { Typography } from '@app/components/Typography';
-import { GlobalStyles } from '@app/constants/styles';
-import { Avatar } from '@app/components/Avatar';
+import { bgColor } from '@app/constants/styles';
+import { Avatar, Typography } from '@app/components';
 
 export const RecentlyHiredEmployeesListItem: ListRenderItem<Employee> = itemData => {
   const { item } = itemData;
@@ -19,7 +18,7 @@ export const RecentlyHiredEmployeesListItem: ListRenderItem<Employee> = itemData
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: GlobalStyles.colors.white,
+    backgroundColor: bgColor,
     alignItems: 'center',
     borderRadius: 20,
     padding: 10,

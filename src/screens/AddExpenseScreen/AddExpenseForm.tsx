@@ -4,9 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { AddExpenseFormValuesType, validationSchema } from './validationSchema';
-import { Typography } from '@app/components/Typography';
-import { CustomButton } from '@app/components/CustomButton';
-import { Input } from '@app/components/Input';
+import { Typography, CustomButton, Input } from '@app/components';
 
 const initialValues = {
   amount: '',

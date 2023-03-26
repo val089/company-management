@@ -1,3 +1,7 @@
+import { Appearance } from 'react-native';
+
+const colorScheme = Appearance.getColorScheme();
+
 export const GlobalStyles = {
   colors: {
     primary100: '#1e1e1e',
@@ -16,3 +20,9 @@ export const GlobalStyles = {
     poppinsBold: 'Poppins-Bold',
   },
 };
+
+export const bgColor =
+  colorScheme === 'dark' ? GlobalStyles.colors.primary100 : GlobalStyles.colors.white;
+
+export const fontColor =
+  colorScheme === 'dark' ? GlobalStyles.colors.white : GlobalStyles.colors.black;

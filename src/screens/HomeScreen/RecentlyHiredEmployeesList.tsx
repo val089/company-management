@@ -1,8 +1,9 @@
 import { StyleSheet, FlatList, View } from 'react-native';
 import { Employee } from '@app/types';
 import { RecentlyHiredEmployeesListItem } from './RecentlyHiredEmployeesListItem';
-import { Typography } from '@app/components/Typography';
+import { Typography } from '@app/components';
 import { filterRecentlyHiredEmployees } from '@app/utils/filterRecentlyHiredEmployees';
+import { fontColor } from '@app/constants/styles';
 
 interface Props {
   employees: Employee[];
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontWeight: 'bold',
     paddingHorizontal: 16,
+    color: fontColor,
   },
   list: {
     paddingHorizontal: 16,

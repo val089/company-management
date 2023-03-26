@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { store } from '@app/store/store';
 import { Provider } from 'react-redux';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar, Text, Appearance } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthContextProvider, AuthContext } from '@app/context/auth-context';
@@ -13,8 +13,11 @@ import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScr
 import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
 import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
-
 import { TabNavigation } from '@app/navigation/TabNavigation';
+import { BasicHeader } from './components/BasicHeader';
+import { GlobalStyles } from './constants/styles';
+
+const colorScheme = Appearance.getColorScheme();
 
 export type RootStackParamList = {
   Login: undefined;
@@ -65,10 +68,22 @@ const AuthenticatedStack = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="AddEmployee" component={AddEmployeeScreen} />
+      <Stack.Screen
+        name="AddEmployee"
+        component={AddEmployeeScreen}
+        options={{
+          header: () => <BasicHeader title="Add employee" />,
+        }}
+      />
       <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
       <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
-      <Stack.Screen name="AddExpense" component={AddExpenseScreen} />
+      <Stack.Screen
+        name="AddExpense"
+        component={AddExpenseScreen}
+        options={{
+          header: () => <BasicHeader title="Add Expense" />,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -113,7 +128,12 @@ const Root = () => {
 const App = () => {
   return (
     <AuthContextProvider>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <StatusBar
+        backgroundColor={
+          colorScheme === 'dark' ? GlobalStyles.colors.primary100 : GlobalStyles.colors.white
+        }
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
       <Root />
     </AuthContextProvider>
   );

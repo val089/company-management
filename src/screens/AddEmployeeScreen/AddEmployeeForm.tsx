@@ -4,11 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { AddEmployeeFormValuesType, validationSchema } from './validationSchema';
-import { Typography } from '@app/components/Typography';
-import { CustomButton } from '@app/components/CustomButton';
+import { Typography, CustomButton, TextFieldButton, Input } from '@app/components';
 import DatePicker from 'react-native-date-picker';
-import { TextFieldButton } from '@app/components/TextFieldButton';
-import { Input } from '@app/components/Input';
 
 const initialValues = {
   firstName: '',

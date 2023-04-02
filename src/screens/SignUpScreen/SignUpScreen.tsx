@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 
-import { GlobalStyles } from '@app/constants/styles';
+import { bgColor } from '@app/constants/styles';
 
 import { SignUpForm } from './SignUpForm';
 import { LoadingOverlay } from '@app/components';
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: GlobalStyles.colors.white,
+    backgroundColor: bgColor,
     alignItems: 'center',
     justifyContent: 'center',
   },

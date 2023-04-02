@@ -16,7 +16,7 @@ export const Typography = ({ type, style = null, children, ...restProps }: Typog
     logoText: {
       fontSize: 40,
       fontFamily: GlobalStyles.fonts.poppinsBold,
-      color: GlobalStyles.colors.black,
+      color: fontColor,
     },
     button: {
       fontSize: 18,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextInput, Text, View, StyleSheet, TextInputProps, Pressable } from 'react-native';
-import { GlobalStyles } from '@app/constants/styles';
+import { GlobalStyles, fontColor } from '@app/constants/styles';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 
 import { VisibleEyeIcon, VisibleOffEyeIcon } from '@app/assets/icons';
@@ -58,7 +58,7 @@ export const Input = <FormData extends FieldValues>({
         onFocus={() => setIsFocused(true)}
         value={field.value}
         keyboardType={type === 'email' ? 'email-address' : 'default'}
-        secureTextEntry={type === 'password' && isPasswordVisible}
+        secureTextEntry={type === 'password' && !isPasswordVisible}
         {...restProps}
       />
       {type === 'password' && (
@@ -75,7 +75,7 @@ export const Input = <FormData extends FieldValues>({
 
 const styles = StyleSheet.create({
   input: {
-    color: '#000',
+    color: fontColor,
     paddingHorizontal: 16,
     borderColor: GlobalStyles.colors.grey500,
     borderWidth: 1,

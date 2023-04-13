@@ -4,15 +4,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '@app/App';
 import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
-import { ExpensesScreen } from '@app/screens/ExpensesScreen';
+import { ExpensesScreen } from '@app/screens/ExpensesScreen/ExpensesScreen';
 
 import { HomeIcon } from '@app/assets/icons/HomeIcon';
 import { GlobalStyles } from '@app/constants/styles';
 import { ListIcon } from '@app/assets/icons/ListIcon';
-import { Typography } from '@app/components/Typography';
+import { Typography, BasicHeader, HomeHeader } from '@app/components';
 import { CashIcon } from '@app/assets/icons/CashIcon';
-import { HomeHeader } from '@app/components/HomeHeader';
-import { BasicHeader } from '@app/components/BasicHeader';
 import { RootStackNavigation } from '@app/App';
 import { bgColor } from '@app/constants/styles';
 // import { TestScreen } from '@app/screens/TestScreen';

@@ -10,3 +10,5 @@ export * from './Logo';
 export * from './ModalPopup';
 export * from './TextFieldButton';
 export * from './Typography';
+export * from './Radio';
+export * from './Select';

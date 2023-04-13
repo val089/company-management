@@ -16,7 +16,7 @@ export const AddExpenseScreen = () => {
     try {
       if (user?.uid) {
         const formattedData = {
-          category: formData.category,
+          // category: formData.category,
           type: formData.type as ExpenseType,
           amount: Number(formData.amount),
           userId: user.uid,

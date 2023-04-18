@@ -6,10 +6,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Expense, ExpenseType } from '@app/types';
 
 const renderItem: ListRenderItem<Expense> = ({ item }) => {
-  const { amount, type } = item;
+  const { amount, type, category } = item;
   return (
     <View style={styles.listItem}>
-      <Typography type="small">Description</Typography>
+      <Typography type="small">{category}</Typography>
       <Typography
         type="normal"
         style={type === ExpenseType.EXPENSE ? styles.expense : styles.income}>

@@ -13,6 +13,8 @@ import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScr
 import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
 import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
+import { ExpensesCategoriesScreen } from './screens/ExpensesCategoriesScreen';
+
 import { TabNavigation } from '@app/navigation/TabNavigation';
 import { BasicHeader } from './components/BasicHeader';
 import { GlobalStyles } from './constants/styles';
@@ -30,6 +32,7 @@ export type RootStackParamList = {
   TakingPhotoAndUploading: undefined;
   Expenses: undefined;
   AddExpense: undefined;
+  ExpensesCategories: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -82,6 +85,13 @@ const AuthenticatedStack = () => {
         component={AddExpenseScreen}
         options={{
           header: () => <BasicHeader title="Add Expense" />,
+        }}
+      />
+      <Stack.Screen
+        name="ExpensesCategories"
+        component={ExpensesCategoriesScreen}
+        options={{
+          header: () => <BasicHeader title="Expenses Categories" />,
         }}
       />
     </Stack.Navigator>

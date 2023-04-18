@@ -24,7 +24,7 @@ export enum ExpenseType {
 export interface Expense {
   id: string;
   type: ExpenseType;
-  // category: string;
+  category: string;
   createdAt: string;
   amount: number;
   userId: string;

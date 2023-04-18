@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from './slices/api';
 import employeesReducer from './slices/employees';
+import expenseCategoryReducer from './slices/expenseCategory';
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     employees: employeesReducer,
+    expenseCategory: expenseCategoryReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

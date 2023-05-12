@@ -1,9 +1,9 @@
 import { View, StyleSheet, FlatList, ListRenderItem } from 'react-native';
 import { GlobalStyles, bgColor } from '@app/constants/styles';
-import { useFetchExpensesQuery } from '@app/store/slices/api';
-import { LoadingOverlay, Typography } from '@app/components';
+import { Typography } from '@app/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Expense, ExpenseType } from '@app/types';
+import { useAppSelector } from '@app/hooks/reduxHooks';
 
 const renderItem: ListRenderItem<Expense> = ({ item }) => {
   const { amount, type, category } = item;
@@ -20,11 +20,7 @@ const renderItem: ListRenderItem<Expense> = ({ item }) => {
 };
 
 export const ExpensesScreen = () => {
-  const { data: expenses, isFetching } = useFetchExpensesQuery({});
-
-  if (isFetching) {
-    return <LoadingOverlay message="Fetching data..." />;
-  }
+  const expenses = useAppSelector(state => state.expenses.expenses);
 
   return (
     <SafeAreaView style={styles.screen}>

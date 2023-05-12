@@ -12,3 +12,4 @@ export * from './TextFieldButton';
 export * from './Typography';
 export * from './Radio';
 export * from './Select';
+export * from './MoneySummary';

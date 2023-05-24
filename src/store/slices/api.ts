@@ -2,9 +2,17 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { Employee, EmployeeOmitID, Expense, ExpenseOmitID } from '@app/types';
+// import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
 
 const employeesRef = firestore().collection('employees');
 const expenseRef = firestore().collection('expenses');
+
+interface FetchExpensesParams {
+  filterByMonthsNumber?: boolean;
+  monthsNumber?: number;
+}
+
+//  .where('createdAt', '<', firstDayOfMonthsAgo)
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -51,11 +59,12 @@ export const apiSlice = createApi({
         }
       },
     }),
-    fetchExpenses: builder.query({
+    fetchExpenses: builder.query<Expense[], FetchExpensesParams>({
       queryFn: async () => {
         try {
           const userId = auth().currentUser?.uid;
           const allExpenses = await expenseRef.where('userId', '==', userId).get();
+
           const expenses = [] as Expense[];
           for (const doc of allExpenses.docs) {
             expenses.push({
@@ -70,6 +79,28 @@ export const apiSlice = createApi({
       },
       providesTags: ['Expenses'],
     }),
+    // fetchExpenses: builder.query<Expense[], FetchExpensesParams>({
+    //   queryFn: async ({ filterByMonthsNumber = false, monthsNumber = 3 }) => {
+    //     try {
+    //       const firstDayOfMonthsAgo = getTimestampFirstDayOfMonthsAgo(monthsNumber);
+
+    //       const userId = auth().currentUser?.uid;
+    //       const allExpenses = await expenseRef.where('userId', '==', userId).get();
+
+    //       const expenses = [] as Expense[];
+    //       for (const doc of allExpenses.docs) {
+    //         expenses.push({
+    //           id: doc.id,
+    //           ...doc.data(),
+    //         } as Expense);
+    //       }
+    //       return { data: expenses };
+    //     } catch (error) {
+    //       return { error };
+    //     }
+    //   },
+    //   providesTags: ['Expenses'],
+    // }),
     addExpense: builder.mutation({
       queryFn: async (expense: ExpenseOmitID) => {
         try {

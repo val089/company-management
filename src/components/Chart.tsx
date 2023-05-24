@@ -1,27 +1,57 @@
-import { StyleSheet, View, Dimensions } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { BarChart } from 'react-native-chart-kit';
 import { GlobalStyles } from '@app/constants/styles';
+import { Expense } from '@app/types';
+import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
+import { formatDataForChart } from '@app/utils/formatDataForChart';
 
-export const Chart = () => {
+interface ChartProps {
+  expenses: Expense[];
+}
+
+const filterAndFormatExpenses = (expenses: Expense[]) => {
+  const firstDayOfMonthsAgo = getTimestampFirstDayOfMonthsAgo(2);
+  const filteredExpenses = expenses
+    .filter(({ createdAt }) => createdAt >= firstDayOfMonthsAgo)
+    .map(({ createdAt, amount, type }) => {
+      const date = new Date(createdAt);
+      return {
+        month: date.toLocaleString('en', { month: 'long' }),
+        amount: type === 'expense' ? -amount : amount,
+      };
+    });
+
+  return formatDataForChart(filteredExpenses);
+};
+
+export const Chart = ({ expenses = [] }: ChartProps) => {
+  if (!expenses || expenses.length === 0) {
+    return <Text>No expenses to display</Text>;
+  }
+
+  const formatedDataForChart = filterAndFormatExpenses(expenses);
+
+  const chartLabels = formatedDataForChart.map(({ month }) => month);
+  const chartData = formatedDataForChart.map(({ amount }) => amount);
+
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: chartLabels,
     datasets: [
       {
-        data: [4000, 2000, 6000, 7000, 10000, 8500],
+        data: chartData,
       },
     ],
   };
 
   return (
     <View style={styles.container}>
-      <LineChart
+      <BarChart
         segments={4}
         fromZero
+        style={styles.chart}
         data={data}
-        width={Dimensions.get('window').width - 32}
+        width={Dimensions.get('window').width}
         height={300}
-        verticalLabelRotation={20}
-        bezier
         chartConfig={{
           decimalPlaces: 0,
           backgroundGradientFrom: GlobalStyles.colors.blue100,
@@ -30,9 +60,10 @@ export const Chart = () => {
           backgroundGradientToOpacity: 1,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 10) => `rgba(255, 255, 255, ${opacity})`,
-          strokeWidth: 3, // optional, default 3
         }}
-        style={styles.chart}
+        verticalLabelRotation={0}
+        yAxisLabel="$"
+        yAxisSuffix=""
       />
     </View>
   );
@@ -41,9 +72,22 @@ export const Chart = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 20,
   },
   chart: {
-    borderRadius: 20,
+    paddingTop: 30,
+  },
+  filters: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  filterBtn: {
+    backgroundColor: GlobalStyles.colors.blue100,
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
+  },
+  filterText: {
+    color: GlobalStyles.colors.white,
   },
 });

@@ -25,7 +25,8 @@ export interface Expense {
   id: string;
   type: ExpenseType;
   category: string;
-  createdAt: string;
+  createdAt: number; //timestamp in ms
+  // createdAt: string;
   amount: number;
   userId: string;
 }

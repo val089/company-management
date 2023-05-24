@@ -15,6 +15,8 @@ export const HomeScreen = () => {
   const { data: employees, isFetching: fetchingEmployees } = useFetchEmployeesQuery({});
   const { data: expenses, isFetching: fetchingExpenses } = useFetchExpensesQuery({});
 
+  console.log(expenses);
+
   useEffect(() => {
     if (employees) {
       dispatch(setEmployees(employees));
@@ -45,7 +47,7 @@ export const HomeScreen = () => {
       <View style={styles.moneySummaryContainer}>
         <MoneySummary money={money?.amount} style={styles.moneySummary} />
       </View>
-      <Chart />
+      {expenses && <Chart expenses={expenses} />}
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
     </SafeAreaView>
   );

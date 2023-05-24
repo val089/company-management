@@ -44,7 +44,7 @@ export const AddExpenseScreen = ({ navigation }: RootStackNavigation<'AddExpense
           type: formData.type as ExpenseType,
           amount: Number(formData.amount),
           userId: user.uid,
-          createdAt: new Date().toISOString(),
+          createdAt: new Date().getTime(),
         };
         await addExpense(formattedData);
         navigation.goBack();

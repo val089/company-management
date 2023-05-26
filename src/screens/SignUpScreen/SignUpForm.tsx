@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { View, StyleSheet } from 'react-native';
-
 import { useForm } from 'react-hook-form';
+import { StyleSheet, View } from 'react-native';
+import { CustomButton, Input, Typography } from '@app/components';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigation } from '@react-navigation/native';
 
 import { SignUpFormValuesType, validationSchema } from './validationSchema';
-import { Typography, CustomButton, Input } from '@app/components';
 
 const initialValues = {
   email: '',

@@ -1,7 +1,7 @@
-import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
-import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth';
 import { Employee, EmployeeOmitID, Expense, ExpenseOmitID } from '@app/types';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 // import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
 
 const employeesRef = firestore().collection('employees');

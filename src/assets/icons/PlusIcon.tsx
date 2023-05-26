@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, { SvgProps, Path } from 'react-native-svg';
+import Svg, { Path, SvgProps } from 'react-native-svg';
 
 interface Props {
   size?: string | number;

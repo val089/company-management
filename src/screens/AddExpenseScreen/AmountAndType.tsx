@@ -1,9 +1,10 @@
-import { View, StyleSheet, TextInput, Text } from 'react-native';
 import { Controller, useFormContext } from 'react-hook-form';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Radio } from '@app/components';
-import { AddExpenseFormValuesType } from './validationSchema';
-import { GlobalStyles, fontColor } from '@app/constants/styles';
+import { fontColor, GlobalStyles } from '@app/constants/styles';
 import { ExpenseType } from '@app/types';
+
+import { AddExpenseFormValuesType } from './validationSchema';
 
 export const AmountAndType = () => {
   const {

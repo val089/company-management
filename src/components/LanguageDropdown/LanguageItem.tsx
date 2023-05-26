@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageSourcePropType, Image } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { CheckIcon } from '@app/assets/icons';
 
 interface LanguageItemProps {

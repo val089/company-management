@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { apiSlice } from './slices/api';
 import employeesReducer from './slices/employees';
 import expenseCategoryReducer from './slices/expenseCategory';

@@ -1,7 +1,7 @@
-import { StyleSheet, TouchableOpacity, ListRenderItem } from 'react-native';
-import { Employee } from '@app/types';
-import { bgColor } from '@app/constants/styles';
+import { ListRenderItem, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar, Typography } from '@app/components';
+import { bgColor } from '@app/constants/styles';
+import { Employee } from '@app/types';
 
 export const RecentlyHiredEmployeesListItem: ListRenderItem<Employee> = itemData => {
   const { item } = itemData;

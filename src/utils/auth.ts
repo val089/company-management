@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
-import { firebase } from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
+import { firebase } from '@react-native-firebase/database';
 
 interface IUser {
   uid: string;

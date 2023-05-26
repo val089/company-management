@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-
+import { StyleSheet, Text, View } from 'react-native';
 import { ModalPopup } from '@app/components/ModalPopup';
+
 import { CustomButton } from './CustomButton';
 import { Typography } from './Typography';
 

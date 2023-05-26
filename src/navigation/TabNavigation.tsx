@@ -1,18 +1,17 @@
 import { useRef } from 'react';
-import { View, Animated, Dimensions, StyleSheet } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Animated, Dimensions, StyleSheet, View } from 'react-native';
 import { RootStackParamList } from '@app/App';
-import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
+import { RootStackNavigation } from '@app/App';
+import { CashIcon } from '@app/assets/icons/CashIcon';
+import { HomeIcon } from '@app/assets/icons/HomeIcon';
+import { ListIcon } from '@app/assets/icons/ListIcon';
+import { BasicHeader, HomeHeader, Typography } from '@app/components';
+import { GlobalStyles } from '@app/constants/styles';
+import { bgColor } from '@app/constants/styles';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
 import { ExpensesScreen } from '@app/screens/ExpensesScreen/ExpensesScreen';
-
-import { HomeIcon } from '@app/assets/icons/HomeIcon';
-import { GlobalStyles } from '@app/constants/styles';
-import { ListIcon } from '@app/assets/icons/ListIcon';
-import { Typography, BasicHeader, HomeHeader } from '@app/components';
-import { CashIcon } from '@app/assets/icons/CashIcon';
-import { RootStackNavigation } from '@app/App';
-import { bgColor } from '@app/constants/styles';
+import { HomeScreen } from '@app/screens/HomeScreen/HomeScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { TestScreen } from '@app/screens/TestScreen';
 // import { PlusIcon } from '@app/assets/icons/PlusIcon';
 

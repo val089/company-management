@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Text, View, StyleSheet, Animated, Pressable, LayoutAnimation } from 'react-native';
-import { Radio } from './Radio';
+import React, { useRef, useState } from 'react';
+import { Control, useController } from 'react-hook-form';
+import { Animated, LayoutAnimation, Pressable, StyleSheet, Text, View } from 'react-native';
 import { toggleAnimation } from '@app/animations/toggleAnimation';
-import { GlobalStyles, bgColor } from '@app/constants/styles';
-import { Typography } from './Typography';
 import { RightArrowIcon } from '@app/assets/icons';
-import { useController, Control } from 'react-hook-form';
+import { bgColor, GlobalStyles } from '@app/constants/styles';
+
+import { Radio } from './Radio';
+import { Typography } from './Typography';
 
 type Props = {
   label: string;

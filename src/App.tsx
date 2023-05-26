@@ -1,23 +1,22 @@
-import { useContext, useState, useEffect } from 'react';
-import { store } from '@app/store/store';
+import { useContext, useEffect, useState } from 'react';
+import { Appearance, StatusBar, Text } from 'react-native';
 import { Provider } from 'react-redux';
-import { StatusBar, Text, Appearance } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthContextProvider, AuthContext } from '@app/context/auth-context';
-import auth from '@react-native-firebase/auth';
-
+import { AuthContext, AuthContextProvider } from '@app/context/auth-context';
+import { TabNavigation } from '@app/navigation/TabNavigation';
+import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
 import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
 import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
-import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
-import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
-import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
-import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
-import { ExpensesCategoriesScreen } from './screens/ExpensesCategoriesScreen';
+import { store } from '@app/store/store';
+import auth from '@react-native-firebase/auth';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { TabNavigation } from '@app/navigation/TabNavigation';
 import { BasicHeader } from './components/BasicHeader';
 import { GlobalStyles } from './constants/styles';
+import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
+import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
+import { ExpensesCategoriesScreen } from './screens/ExpensesCategoriesScreen';
+import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 
 const colorScheme = Appearance.getColorScheme();
 
@@ -78,7 +77,13 @@ const AuthenticatedStack = () => {
           header: () => <BasicHeader title="Add employee" />,
         }}
       />
-      <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
+      <Stack.Screen
+        name="EmployeeDetails"
+        component={EmployeeDetailsScreen}
+        options={{
+          header: () => <BasicHeader title="Employee Details" />,
+        }}
+      />
       <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
       <Stack.Screen
         name="AddExpense"

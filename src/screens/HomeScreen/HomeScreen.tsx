@@ -1,13 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { AuthContext } from '@app/context/auth-context';
-import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
-import { useFetchEmployeesQuery, useFetchExpensesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
-import { setEmployees } from '@app/store/slices/employees';
-import { Chart, LanguageDropdown, LoadingOverlay, MoneySummary } from '@app/components';
+import { Chart, LoadingOverlay, MoneySummary } from '@app/components';
 import { bgColor } from '@app/constants/styles';
+import { AuthContext } from '@app/context/auth-context';
+import { useFetchEmployeesQuery, useFetchExpensesQuery } from '@app/store/slices/api';
+import { setEmployees } from '@app/store/slices/employees';
 import { setExpenses } from '@app/store/slices/expenses';
+
+import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
 
 export const HomeScreen = () => {
   const { user } = useContext(AuthContext);
@@ -47,7 +48,6 @@ export const HomeScreen = () => {
       </View>
       {expenses && <Chart expenses={expenses} />}
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
-      <LanguageDropdown />
     </SafeAreaView>
   );
 };

@@ -1,7 +1,8 @@
-import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
-import { useAppSelector } from '@app/hooks/reduxHooks';
-import { EmployeesListItem } from './EmployeesListItem';
+import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { bgColor } from '@app/constants/styles';
+import { useAppSelector } from '@app/hooks/reduxHooks';
+
+import { EmployeesListItem } from './EmployeesListItem';
 
 export const EmployeesListScreen = () => {
   const employees = useAppSelector(state => state.employees.employees);

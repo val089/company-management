@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Radio } from '@app/components';
 import { bgColor } from '@app/constants/styles';
 import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
 import { selectCategory, setCategory } from '@app/store/slices/expenseCategory';
+import { useNavigation } from '@react-navigation/native';
 
 const categories = [
   { id: 1, value: 'category01', label: 'category 1' },

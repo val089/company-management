@@ -1,6 +1,9 @@
+export * from './AddIcon';
 export * from './BackArrowIcon';
 export * from './CashIcon';
-export * from './AddIcon';
+export * from './CheckIcon';
+export * from './ChevronDownIcon';
+export * from './ChevronUpIcon';
 export * from './CloseIcon';
 export * from './ExitDoorIcon';
 export * from './HomeIcon';
@@ -9,6 +12,3 @@ export * from './PlusIcon';
 export * from './RightArrowIcon';
 export * from './VisibleEyeIcon';
 export * from './VisibleOffEyeIcon';
-export * from './ChevronDownIcon';
-export * from './ChevronUpIcon';
-export * from './CheckIcon';

@@ -1,6 +1,7 @@
 import React, { ReactNode, useMemo } from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { GlobalStyles } from '@app/constants/styles';
+
 import { Typography } from './Typography';
 
 type RadioProps = {

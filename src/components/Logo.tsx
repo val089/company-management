@@ -1,4 +1,5 @@
-import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import { Typography } from './Typography';
 
 interface LogoProps {

@@ -1,12 +1,13 @@
-import { View, StyleSheet, Text, Pressable } from 'react-native';
-import { Avatar } from './Avatar';
 import { useContext } from 'react';
-import { AuthContext } from '@app/context/auth-context';
-import { GlobalStyles } from '@app/constants/styles';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { ExitDoorIcon } from '@app/assets/icons/ExitDoorIcon';
-import { apiSlice } from '@app/store/slices/api';
-import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { GlobalStyles } from '@app/constants/styles';
 import { bgColor } from '@app/constants/styles';
+import { AuthContext } from '@app/context/auth-context';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { apiSlice } from '@app/store/slices/api';
+
+import { Avatar } from './Avatar';
 import { Typography } from './Typography';
 
 export const HomeHeader = () => {

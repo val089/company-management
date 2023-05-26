@@ -1,14 +1,15 @@
 import { useContext } from 'react';
-import { View, StyleSheet, Alert, Pressable, SafeAreaView, ScrollView } from 'react-native';
+import { Alert, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { RootStackNavigation } from '@app/App';
+import { AddImageModal, Avatar } from '@app/components';
+import { bgColor } from '@app/constants/styles';
 import { AuthContext } from '@app/context/auth-context';
+import { useCamera } from '@app/hooks/useCamera';
+import { useModal } from '@app/hooks/useModal';
+import { useAddEmployeeMutation } from '@app/store/slices/api';
+
 import { AddEmployeeForm } from './AddEmployeeForm';
 import { AddEmployeeFormValuesType } from './validationSchema';
-import { RootStackNavigation } from '@app/App';
-import { useAddEmployeeMutation } from '@app/store/slices/api';
-import { AddImageModal, Avatar } from '@app/components';
-import { useModal } from '@app/hooks/useModal';
-import { useCamera } from '@app/hooks/useCamera';
-import { bgColor } from '@app/constants/styles';
 
 export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmployee'>) => {
   const { isModalOpen, showModal, hideModal } = useModal();

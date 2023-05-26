@@ -1,6 +1,6 @@
-import { GlobalStyles, bgColor, fontColor } from '@app/constants/styles';
-import { StyleSheet, Pressable, View, ViewStyle, StyleProp, Text } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { RightArrowIcon } from '@app/assets/icons/RightArrowIcon';
+import { bgColor, fontColor, GlobalStyles } from '@app/constants/styles';
 
 interface TextFieldButtonProps {
   label: string;

@@ -1,0 +1,93 @@
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { BarChart } from 'react-native-chart-kit';
+import { GlobalStyles } from '@app/constants/styles';
+import { Expense } from '@app/types';
+import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
+import { formatDataForChart } from '@app/utils/formatDataForChart';
+
+interface ChartProps {
+  expenses: Expense[];
+}
+
+const filterAndFormatExpenses = (expenses: Expense[]) => {
+  const firstDayOfMonthsAgo = getTimestampFirstDayOfMonthsAgo(2);
+  const filteredExpenses = expenses
+    .filter(({ createdAt }) => createdAt >= firstDayOfMonthsAgo)
+    .map(({ createdAt, amount, type }) => {
+      const date = new Date(createdAt);
+      return {
+        month: date.toLocaleString('en', { month: 'long' }),
+        amount: type === 'expense' ? -amount : amount,
+      };
+    });
+
+  return formatDataForChart(filteredExpenses);
+};
+
+export const Chart = ({ expenses = [] }: ChartProps) => {
+  if (!expenses || expenses.length === 0) {
+    return <Text>No expenses to display</Text>;
+  }
+
+  const formatedDataForChart = filterAndFormatExpenses(expenses);
+
+  const chartLabels = formatedDataForChart.map(({ month }) => month);
+  const chartData = formatedDataForChart.map(({ amount }) => amount);
+
+  const data = {
+    labels: chartLabels,
+    datasets: [
+      {
+        data: chartData,
+      },
+    ],
+  };
+
+  return (
+    <View style={styles.container}>
+      <BarChart
+        segments={4}
+        fromZero
+        style={styles.chart}
+        data={data}
+        width={Dimensions.get('window').width}
+        height={300}
+        chartConfig={{
+          decimalPlaces: 0,
+          backgroundGradientFrom: GlobalStyles.colors.blue100,
+          backgroundGradientFromOpacity: 0.95,
+          backgroundGradientTo: GlobalStyles.colors.blue100,
+          backgroundGradientToOpacity: 1,
+          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          labelColor: (opacity = 10) => `rgba(255, 255, 255, ${opacity})`,
+        }}
+        verticalLabelRotation={0}
+        yAxisLabel="$"
+        yAxisSuffix=""
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+  chart: {
+    paddingTop: 30,
+  },
+  filters: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  filterBtn: {
+    backgroundColor: GlobalStyles.colors.blue100,
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
+  },
+  filterText: {
+    color: GlobalStyles.colors.white,
+  },
+});

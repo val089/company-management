@@ -1,9 +1,9 @@
 import React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
-const VisibleOffEye: React.FC<SvgProps> = ({
-  width = '24',
-  height = '24',
+export const VisibleOffEyeIcon: React.FC<SvgProps> = ({
+  width = '28',
+  height = '28',
   viewBox = '0 0 48 48',
   ...restProps
 }) => (
@@ -14,5 +14,3 @@ const VisibleOffEye: React.FC<SvgProps> = ({
     />
   </Svg>
 );
-
-export default VisibleOffEye;

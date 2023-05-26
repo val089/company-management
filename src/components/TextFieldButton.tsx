@@ -1,4 +1,4 @@
-import { GlobalStyles } from '@app/constants/styles';
+import { GlobalStyles, bgColor, fontColor } from '@app/constants/styles';
 import { StyleSheet, Pressable, View, ViewStyle, StyleProp, Text } from 'react-native';
 import { RightArrowIcon } from '@app/assets/icons/RightArrowIcon';
 
@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
     left: 15,
     top: -10,
     paddingHorizontal: 8,
-    backgroundColor: GlobalStyles.colors.primary100,
+    backgroundColor: bgColor,
   },
   label: {
-    color: GlobalStyles.colors.grey700,
+    color: fontColor,
     fontSize: 12,
   },
 });

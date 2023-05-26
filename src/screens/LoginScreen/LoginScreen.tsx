@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View, Alert } from 'react-native';
-
-import { GlobalStyles } from '@app/constants/styles';
-
+import { bgColor } from '@app/constants/styles';
 import { LoginForm } from './LoginForm';
-import { LoadingOverlay } from '@app/components/LoadingOverlay';
 import { signIn } from '@app/utils/auth';
-import { Logo } from '@app/components/Logo';
+import { Logo, LoadingOverlay } from '@app/components';
 
 export const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: GlobalStyles.colors.primary100,
+    backgroundColor: bgColor,
     alignItems: 'center',
     justifyContent: 'center',
   },

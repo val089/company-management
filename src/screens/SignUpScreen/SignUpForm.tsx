@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
-import { Formik } from 'formik';
+
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import { SignUpFormValuesType, validationSchema } from './validationSchema';
-import { CustomTextField } from '@app/components/CustomTextField';
-import { Typography } from '@app/components/Typography';
-import { CustomButton } from '@app/components/CustomButton';
+import { Typography, CustomButton, Input } from '@app/components';
 
 const initialValues = {
   email: '',
@@ -20,6 +21,12 @@ interface SignUpFormProps {
 export const SignUpForm = ({ onSubmit }: SignUpFormProps) => {
   const navigation = useNavigation();
 
+  const { control, handleSubmit } = useForm<SignUpFormValuesType>({
+    defaultValues: initialValues,
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
+
   const onSubmitHandler = useCallback(
     async (data: SignUpFormValuesType) => {
       await onSubmit(data.email, data.password);
@@ -28,53 +35,35 @@ export const SignUpForm = ({ onSubmit }: SignUpFormProps) => {
   );
 
   return (
-    <Formik
-      validateOnChange
-      validateOnBlur
-      validationSchema={validationSchema}
-      initialValues={initialValues as SignUpFormValuesType}
-      onSubmit={onSubmitHandler}>
-      {({ handleChange, handleBlur, handleSubmit }) => (
-        <View>
-          <CustomTextField
-            name="email"
-            label="E-mail"
-            onChangeText={handleChange('email')}
-            onBlur={handleBlur('email')}
-          />
+    <>
+      <Input name="email" label="E-mail" control={control} style={styles.input} />
 
-          <View style={styles.inputGroup}>
-            <CustomTextField
-              name="password"
-              label="Password"
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-              type="password"
-            />
-          </View>
+      <Input
+        label="Password"
+        name="password"
+        type="password"
+        control={control}
+        style={styles.input}
+      />
 
-          <View style={styles.inputGroup}>
-            <CustomTextField
-              name="repeatPassword"
-              label="Repeat Password"
-              onChangeText={handleChange('repeatPassword')}
-              onBlur={handleBlur('repeatPassword')}
-              type="password"
-            />
-          </View>
+      <Input
+        label="Repeat Password"
+        name="repeatPassword"
+        type="password"
+        control={control}
+        style={styles.input}
+      />
 
-          <View style={styles.buttonsContainer}>
-            <CustomButton onPress={() => handleSubmit()} style={styles.button}>
-              <Typography type="button">Sign up</Typography>
-            </CustomButton>
+      <View style={styles.buttonsContainer}>
+        <CustomButton onPress={handleSubmit(onSubmitHandler)} style={styles.button}>
+          <Typography type="button">Sign up</Typography>
+        </CustomButton>
 
-            <CustomButton onPress={() => navigation.navigate('Login')} style={styles.button}>
-              <Typography type="button">Login</Typography>
-            </CustomButton>
-          </View>
-        </View>
-      )}
-    </Formik>
+        <CustomButton onPress={() => navigation.navigate('Login')} style={styles.button}>
+          <Typography type="button">Login</Typography>
+        </CustomButton>
+      </View>
+    </>
   );
 };
 
@@ -87,5 +76,8 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 20,
+  },
+  input: {
+    marginTop: 30,
   },
 });

@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { store } from '@app/store/store';
 import { Provider } from 'react-redux';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar, Text, Appearance } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthContextProvider, AuthContext } from '@app/context/auth-context';
@@ -12,8 +12,14 @@ import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
 import { AddEmployeeScreen } from '@app/screens/AddEmployeeScreen/AddEmployeeScreen';
 import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
 import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
+import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
+import { ExpensesCategoriesScreen } from './screens/ExpensesCategoriesScreen';
 
 import { TabNavigation } from '@app/navigation/TabNavigation';
+import { BasicHeader } from './components/BasicHeader';
+import { GlobalStyles } from './constants/styles';
+
+const colorScheme = Appearance.getColorScheme();
 
 export type RootStackParamList = {
   Login: undefined;
@@ -24,6 +30,9 @@ export type RootStackParamList = {
   AddEmployee: undefined;
   EmployeeDetails: { employeeId: string };
   TakingPhotoAndUploading: undefined;
+  Expenses: undefined;
+  AddExpense: undefined;
+  ExpensesCategories: undefined;
 };
 
 export type RootStackNavigation<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -45,7 +54,7 @@ const AuthStack = () => {
       />
       <Stack.Screen
         options={{
-          headerShown: false,
+          header: () => <BasicHeader title="Sign Up" />,
         }}
         name="SignUp"
         component={SignUpScreen}
@@ -62,9 +71,29 @@ const AuthenticatedStack = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="AddEmployee" component={AddEmployeeScreen} />
+      <Stack.Screen
+        name="AddEmployee"
+        component={AddEmployeeScreen}
+        options={{
+          header: () => <BasicHeader title="Add employee" />,
+        }}
+      />
       <Stack.Screen name="EmployeeDetails" component={EmployeeDetailsScreen} />
       <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
+      <Stack.Screen
+        name="AddExpense"
+        component={AddExpenseScreen}
+        options={{
+          header: () => <BasicHeader title="Add Expense" />,
+        }}
+      />
+      <Stack.Screen
+        name="ExpensesCategories"
+        component={ExpensesCategoriesScreen}
+        options={{
+          header: () => <BasicHeader title="Expenses Categories" />,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -88,8 +117,12 @@ const Root = () => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(user => {
-      authenticate(user!);
-      if (initializing) setInitializing(false);
+      if (user) {
+        authenticate(user);
+      }
+      if (initializing) {
+        setInitializing(false);
+      }
     });
     return subscriber;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,7 +138,12 @@ const Root = () => {
 const App = () => {
   return (
     <AuthContextProvider>
-      <StatusBar />
+      <StatusBar
+        backgroundColor={
+          colorScheme === 'dark' ? GlobalStyles.colors.primary100 : GlobalStyles.colors.white
+        }
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
       <Root />
     </AuthContextProvider>
   );

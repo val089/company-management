@@ -15,3 +15,20 @@ export interface Employee {
 }
 
 export type EmployeeOmitID = Omit<Employee, 'id'>;
+
+export enum ExpenseType {
+  INCOME = 'income',
+  EXPENSE = 'expense',
+}
+
+export interface Expense {
+  id: string;
+  type: ExpenseType;
+  category: string;
+  createdAt: number; //timestamp in ms
+  // createdAt: string;
+  amount: number;
+  userId: string;
+}
+
+export type ExpenseOmitID = Omit<Expense, 'id'>;

@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
-import { Formik } from 'formik';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import { LoginFormValuesType, validationSchema } from './validationSchema';
-import { CustomTextField } from '@app/components/CustomTextField';
-import { CustomButton } from '@app/components/CustomButton';
-import { Typography } from '@app/components/Typography';
+import { CustomButton, Typography, Input } from '@app/components';
 
 const initialValues = {
   email: '',
@@ -19,6 +19,12 @@ interface LoginFormProps {
 export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const navigation = useNavigation();
 
+  const { control, handleSubmit } = useForm<LoginFormValuesType>({
+    defaultValues: initialValues,
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
+
   const onSubmitHandler = useCallback(
     async (data: LoginFormValuesType) => {
       await onSubmit(data.email, data.password);
@@ -27,49 +33,32 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   );
 
   return (
-    <Formik
-      validateOnChange
-      validateOnBlur
-      validationSchema={validationSchema}
-      initialValues={initialValues as LoginFormValuesType}
-      onSubmit={onSubmitHandler}>
-      {({ handleChange, handleBlur, handleSubmit }) => (
-        <View>
-          <CustomTextField
-            name="email"
-            label="E-mail"
-            onChangeText={handleChange('email')}
-            onBlur={handleBlur('email')}
-          />
+    <>
+      <Input name="email" label="E-mail" control={control} style={styles.input} />
+      <Input
+        label="Password"
+        name="password"
+        type="password"
+        control={control}
+        style={styles.input}
+      />
 
-          <View style={styles.inputGroup}>
-            <CustomTextField
-              name="password"
-              label="Password"
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-              type="password"
-            />
-          </View>
+      <View style={styles.buttonsContainer}>
+        <CustomButton onPress={handleSubmit(onSubmitHandler)} style={styles.button}>
+          <Typography type="button">Login</Typography>
+        </CustomButton>
 
-          <View style={styles.buttonsContainer}>
-            <CustomButton onPress={() => handleSubmit()} style={styles.button}>
-              <Typography type="button">Login</Typography>
-            </CustomButton>
-
-            <CustomButton onPress={() => navigation.navigate('SignUp')} style={styles.button}>
-              <Typography type="button">Sign up</Typography>
-            </CustomButton>
-          </View>
-        </View>
-      )}
-    </Formik>
+        <CustomButton onPress={() => navigation.navigate('SignUp')} style={styles.button}>
+          <Typography type="button">Sign up</Typography>
+        </CustomButton>
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  inputGroup: {
-    paddingTop: 30,
+  input: {
+    marginTop: 30,
   },
   buttonsContainer: {
     paddingTop: 30,

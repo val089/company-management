@@ -5,7 +5,7 @@ import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
 import { useFetchEmployeesQuery, useFetchExpensesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
 import { setEmployees } from '@app/store/slices/employees';
-import { Chart, LanguageDropdown, LoadingOverlay, MoneySummary } from '@app/components';
+import { Chart, LoadingOverlay, MoneySummary } from '@app/components';
 import { bgColor } from '@app/constants/styles';
 import { setExpenses } from '@app/store/slices/expenses';
 
@@ -47,7 +47,6 @@ export const HomeScreen = () => {
       </View>
       {expenses && <Chart expenses={expenses} />}
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
-      <LanguageDropdown />
     </SafeAreaView>
   );
 };

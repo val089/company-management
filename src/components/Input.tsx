@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { TextInput, Text, View, StyleSheet, TextInputProps, Pressable } from 'react-native';
-import { GlobalStyles, fontColor } from '@app/constants/styles';
-import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
-
+import { FieldValues, useController, UseControllerProps } from 'react-hook-form';
+import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native';
 import { VisibleEyeIcon, VisibleOffEyeIcon } from '@app/assets/icons';
+import { fontColor, GlobalStyles } from '@app/constants/styles';
+
 import { Typography } from './Typography';
 
 interface InputProps<FormData extends FieldValues> extends UseControllerProps<FormData> {

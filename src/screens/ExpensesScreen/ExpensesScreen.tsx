@@ -1,9 +1,9 @@
-import { View, StyleSheet, FlatList, ListRenderItem } from 'react-native';
-import { GlobalStyles, bgColor } from '@app/constants/styles';
-import { Typography } from '@app/components';
+import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Expense, ExpenseType } from '@app/types';
+import { Typography } from '@app/components';
+import { bgColor, GlobalStyles } from '@app/constants/styles';
 import { useAppSelector } from '@app/hooks/reduxHooks';
+import { Expense, ExpenseType } from '@app/types';
 
 const renderItem: ListRenderItem<Expense> = ({ item }) => {
   const { amount, type, category } = item;

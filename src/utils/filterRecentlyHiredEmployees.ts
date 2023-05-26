@@ -1,5 +1,6 @@
-import { getDateMinusDays } from './getDateMinusDayes';
 import { Employee } from '@app/types';
+
+import { getDateMinusDays } from './getDateMinusDayes';
 
 export const filterRecentlyHiredEmployees = (employees: Employee[], days: number) => {
   const filteredData = employees.filter(employee => {

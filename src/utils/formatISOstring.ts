@@ -2,5 +2,5 @@ export const formatISOstring = (date: string) => {
   if (!date) {
     throw Error('Give a ISO string for date.');
   }
-  return date.slice(0, 10).split('-').reverse().join('-');
+  return date.slice(0, 10).split('-').reverse().join('.');
 };

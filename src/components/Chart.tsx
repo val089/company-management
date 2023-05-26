@@ -1,9 +1,9 @@
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 import { GlobalStyles } from '@app/constants/styles';
 import { Expense } from '@app/types';
-import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
 import { formatDataForChart } from '@app/utils/formatDataForChart';
+import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
 
 interface ChartProps {
   expenses: Expense[];

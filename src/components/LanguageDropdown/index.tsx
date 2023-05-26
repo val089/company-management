@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ChevronDownIcon, ChevronUpIcon } from '@app/assets/icons';
-import plFlag from '@app/assets/images/flags/poland.png';
-import ukFlag from '@app/assets/images/flags/uk.png';
 import deFlag from '@app/assets/images/flags/germany.png';
+import plFlag from '@app/assets/images/flags/poland.png';
 import ruFlag from '@app/assets/images/flags/russia.png';
+import ukFlag from '@app/assets/images/flags/uk.png';
+
 import { LanguageItem } from './LanguageItem';
 
 const localeOptions = {

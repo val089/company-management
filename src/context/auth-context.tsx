@@ -1,6 +1,6 @@
-import { useState, createContext, ReactNode, useEffect } from 'react';
-import auth from '@react-native-firebase/auth';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { AuthUserType } from '@app/types';
+import auth from '@react-native-firebase/auth';
 
 type AuthCtxType = {
   user: AuthUserType | null;

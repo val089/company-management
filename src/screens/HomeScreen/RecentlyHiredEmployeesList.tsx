@@ -1,9 +1,10 @@
-import { StyleSheet, FlatList, View } from 'react-native';
-import { Employee } from '@app/types';
-import { RecentlyHiredEmployeesListItem } from './RecentlyHiredEmployeesListItem';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { Typography } from '@app/components';
-import { filterRecentlyHiredEmployees } from '@app/utils/filterRecentlyHiredEmployees';
 import { fontColor } from '@app/constants/styles';
+import { Employee } from '@app/types';
+import { filterRecentlyHiredEmployees } from '@app/utils/filterRecentlyHiredEmployees';
+
+import { RecentlyHiredEmployeesListItem } from './RecentlyHiredEmployeesListItem';
 
 interface Props {
   employees: Employee[];

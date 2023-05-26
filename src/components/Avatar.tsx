@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import avatarImg from '@app/assets/images/avatar.png';
 
 type AvatarProps = {

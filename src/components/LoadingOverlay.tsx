@@ -1,4 +1,4 @@
-import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 type LoadingOverlayProps = {
   message: string;

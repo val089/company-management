@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { StyleSheet, View } from 'react-native';
+import DatePicker from 'react-native-date-picker';
+import { CustomButton, Input, TextFieldButton, Typography } from '@app/components';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { AddEmployeeFormValuesType, validationSchema } from './validationSchema';
-import { Typography, CustomButton, TextFieldButton, Input } from '@app/components';
-import DatePicker from 'react-native-date-picker';
 
 const initialValues = {
   firstName: '',

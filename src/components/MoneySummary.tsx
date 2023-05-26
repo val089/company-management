@@ -1,5 +1,6 @@
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { GlobalStyles } from '@app/constants/styles';
-import { View, StyleSheet, ViewStyle, StyleProp } from 'react-native';
+
 import { Typography } from './Typography';
 
 interface MoneySummaryProps {

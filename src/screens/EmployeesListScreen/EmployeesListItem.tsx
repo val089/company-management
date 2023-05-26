@@ -1,8 +1,8 @@
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Avatar, Typography } from '@app/components';
+import { bgColor } from '@app/constants/styles';
 import { Employee } from '@app/types';
 import { useNavigation } from '@react-navigation/native';
-import { View, StyleSheet, Pressable } from 'react-native';
-import { Typography, Avatar } from '@app/components';
-import { bgColor } from '@app/constants/styles';
 
 type EmployeesListItemProps = Pick<
   Employee,

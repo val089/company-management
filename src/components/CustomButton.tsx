@@ -1,4 +1,4 @@
-import { Pressable, StyleProp, StyleSheet, ViewStyle, PressableProps, View } from 'react-native';
+import { Pressable, PressableProps, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { GlobalStyles } from '@app/constants/styles';
 
 interface CustomButtonProps extends PressableProps {

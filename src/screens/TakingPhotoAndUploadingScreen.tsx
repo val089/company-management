@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { CustomButton } from '@app/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { CustomButton } from '@app/components';
 
 export const TakingPhotoAndUploadingScreen = () => {
   const [imageUri, setImageUri] = useState('');

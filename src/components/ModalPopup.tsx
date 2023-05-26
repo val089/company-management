@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { View, Modal, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { Modal, Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { CloseIcon } from '@app/assets/icons/CloseIcon';
 import { GlobalStyles } from '@app/constants/styles';
 

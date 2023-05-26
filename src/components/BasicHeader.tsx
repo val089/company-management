@@ -1,10 +1,11 @@
-import { View, Pressable, StyleSheet, ViewStyle } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { BackArrowIcon } from '@app/assets/icons/BackArrowIcon';
-import { GlobalStyles, fontColor, bgColor } from '@app/constants/styles';
-import { Typography } from './Typography';
-import { AddIcon } from '@app/assets/icons/AddIcon';
+import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native';
+import { AddIcon } from '@app/assets/icons/AddIcon';
+import { BackArrowIcon } from '@app/assets/icons/BackArrowIcon';
+import { bgColor, fontColor, GlobalStyles } from '@app/constants/styles';
+import { useNavigation } from '@react-navigation/native';
+
+import { Typography } from './Typography';
 
 type BasicHeaderProps = {
   title?: string;

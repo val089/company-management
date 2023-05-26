@@ -5,7 +5,7 @@ import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
 import { useFetchEmployeesQuery, useFetchExpensesQuery } from '@app/store/slices/api';
 import { useDispatch } from 'react-redux';
 import { setEmployees } from '@app/store/slices/employees';
-import { Chart, LoadingOverlay, MoneySummary } from '@app/components';
+import { Chart, LanguageDropdown, LoadingOverlay, MoneySummary } from '@app/components';
 import { bgColor } from '@app/constants/styles';
 import { setExpenses } from '@app/store/slices/expenses';
 
@@ -14,8 +14,6 @@ export const HomeScreen = () => {
   const dispatch = useDispatch();
   const { data: employees, isFetching: fetchingEmployees } = useFetchEmployeesQuery({});
   const { data: expenses, isFetching: fetchingExpenses } = useFetchExpensesQuery({});
-
-  console.log(expenses);
 
   useEffect(() => {
     if (employees) {
@@ -49,6 +47,7 @@ export const HomeScreen = () => {
       </View>
       {expenses && <Chart expenses={expenses} />}
       {employees && <RecentlyHiredEmployeesList employees={employees} />}
+      <LanguageDropdown />
     </SafeAreaView>
   );
 };

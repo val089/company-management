@@ -9,3 +9,6 @@ export * from './PlusIcon';
 export * from './RightArrowIcon';
 export * from './VisibleEyeIcon';
 export * from './VisibleOffEyeIcon';
+export * from './ChevronDownIcon';
+export * from './ChevronUpIcon';
+export * from './CheckIcon';

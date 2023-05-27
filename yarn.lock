@@ -6302,6 +6302,11 @@ react-native-date-picker@^4.2.6:
   dependencies:
     prop-types "^15.8.1"
 
+react-native-flipper@^0.191.0:
+  version "0.191.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.191.0.tgz#5447f49f02d955891667f8c3128fd66e4fabd1c0"
+  integrity sha512-JKi9Fm9lfOboRLf01iKtVbjs1bVHE/63ls+mvjzn6hsNAKXkXVtI5VE0Jb/TDkGtwN1l7e+qMrh0EKhc40Iu8A==
+
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz#cbcf0619cbfbddaa9128701aa2d7b4145f9c4fc8"

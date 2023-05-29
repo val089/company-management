@@ -1,5 +1,5 @@
 import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Typography } from '@app/components';
 import { bgColor, GlobalStyles } from '@app/constants/styles';
 import { useAppSelector } from '@app/hooks/reduxHooks';
@@ -22,25 +22,27 @@ const renderItem: ListRenderItem<Expense> = ({ item }) => {
 export const ExpensesScreen = () => {
   const expenses = useAppSelector(state => state.expenses.expenses);
 
+  const insets = useSafeAreaInsets();
+  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
+
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={[styles.screen, safeArea]}>
       <FlatList
         style={styles.list}
         keyExtractor={item => item.id}
         data={expenses}
         renderItem={renderItem}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingVertical: 16,
   },
   list: {
-    flex: 1,
+    paddingTop: 16,
     backgroundColor: bgColor,
   },
   listItem: {
@@ -53,6 +55,10 @@ const styles = StyleSheet.create({
     elevation: 4,
     marginBottom: 10,
     height: 50,
+    shadowColor: GlobalStyles.colors.black,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
   expense: {
     color: GlobalStyles.colors.error100,

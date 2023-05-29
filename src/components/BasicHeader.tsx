@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native';
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AddIcon } from '@app/assets/icons/AddIcon';
 import { BackArrowIcon } from '@app/assets/icons/BackArrowIcon';
 import { bgColor, fontColor, GlobalStyles } from '@app/constants/styles';
@@ -15,6 +16,7 @@ type BasicHeaderProps = {
 
 export const BasicHeader = ({ title = '', isBackIcon = true, onPlusPress }: BasicHeaderProps) => {
   const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
 
   const headerStyle: ViewStyle = {
     justifyContent: isBackIcon ? 'flex-start' : 'space-between',
@@ -25,21 +27,25 @@ export const BasicHeader = ({ title = '', isBackIcon = true, onPlusPress }: Basi
   };
 
   return (
-    <View style={[styles.header, headerStyle]}>
-      {isBackIcon && (
-        <Pressable onPress={() => navigation.goBack()} hitSlop={10}>
-          <BackArrowIcon fill={fontColor} />
-        </Pressable>
-      )}
-      <Typography type="large" style={[styles.title, labelStyle]}>
-        {title}
-      </Typography>
-      {onPlusPress && (
-        <Pressable onPress={onPlusPress}>
-          <AddIcon />
-        </Pressable>
-      )}
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <View style={[styles.header, headerStyle]}>
+          {isBackIcon && (
+            <Pressable onPress={() => navigation.goBack()} hitSlop={10}>
+              <BackArrowIcon fill={fontColor} />
+            </Pressable>
+          )}
+          <Typography type="large" style={[styles.title, labelStyle]}>
+            {title}
+          </Typography>
+          {onPlusPress && (
+            <Pressable onPress={onPlusPress}>
+              <AddIcon />
+            </Pressable>
+          )}
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -51,6 +57,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     elevation: 20,
+    shadowColor: GlobalStyles.colors.black,
+    shadowOffset: { width: -2, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
   title: {
     fontWeight: 'bold',

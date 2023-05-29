@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Alert, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackNavigation } from '@app/App';
 import { AddImageModal, Avatar } from '@app/components';
 import { bgColor } from '@app/constants/styles';
@@ -17,6 +18,9 @@ export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmploy
 
   const { user } = useContext(AuthContext);
   const [addEmployee] = useAddEmployeeMutation();
+
+  const insets = useSafeAreaInsets();
+  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
 
   const onSubmit = async (formData: AddEmployeeFormValuesType) => {
     try {
@@ -41,22 +45,18 @@ export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmploy
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.screen}>
-          <Pressable style={styles.imgContainer} onPress={showModal}>
-            <Avatar imageUri={imageUri} />
-          </Pressable>
-          <AddEmployeeForm onSubmit={onSubmit} />
-          <AddImageModal
-            isModalOpen={isModalOpen}
-            hideModal={hideModal}
-            choosePhoto={choosePhoto}
-            openCamera={openCamera}
-          />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView showsVerticalScrollIndicator={false} style={[styles.screen, safeArea]}>
+      <Pressable style={styles.imgContainer} onPress={showModal}>
+        <Avatar imageUri={imageUri} />
+      </Pressable>
+      <AddEmployeeForm onSubmit={onSubmit} />
+      <AddImageModal
+        isModalOpen={isModalOpen}
+        hideModal={hideModal}
+        choosePhoto={choosePhoto}
+        openCamera={openCamera}
+      />
+    </ScrollView>
   );
 };
 
@@ -70,5 +70,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 20,
+    paddingTop: 16,
   },
 });

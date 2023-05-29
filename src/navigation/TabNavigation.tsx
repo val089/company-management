@@ -37,8 +37,8 @@ export const TabNavigation = () => {
             marginHorizontal: 20,
             height: 60,
             borderRadius: 10,
-            shadowColor: '#000',
-            shadowOpacity: 0.06,
+            shadowColor: GlobalStyles.colors.black,
+            shadowOpacity: 0.1,
             shadowOffset: {
               width: 10,
               height: 10,
@@ -51,9 +51,8 @@ export const TabNavigation = () => {
             name="Home"
             component={HomeScreen}
             options={{
-              tabBarLabel: ({ focused }) => focused && <Typography type="tabMenu">HOME</Typography>,
               tabBarIcon: ({ focused }) => (
-                <View>
+                <View style={{ top: 12 }}>
                   <HomeIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />
@@ -108,10 +107,8 @@ export const TabNavigation = () => {
             name="Expenses"
             component={ExpensesScreen}
             options={({ navigation }: RootStackNavigation<'Expenses'>) => ({
-              tabBarLabel: ({ focused }) =>
-                focused && <Typography type="tabMenu">Expenses</Typography>,
               tabBarIcon: ({ focused }) => (
-                <View>
+                <View style={{ top: 12 }}>
                   <CashIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />
@@ -138,10 +135,10 @@ export const TabNavigation = () => {
             name="EmployeesList"
             component={EmployeesListScreen}
             options={({ navigation }: RootStackNavigation<'EmployeesList'>) => ({
-              tabBarLabel: ({ focused }) =>
-                focused && <Typography type="tabMenu">EMPLOYEES LIST</Typography>,
+              // tabBarLabel: ({ focused }) =>
+              //   focused && <Typography type="tabMenu">EMPLOYEES LIST</Typography>,
               tabBarIcon: ({ focused }) => (
-                <View>
+                <View style={{ top: 12 }}>
                   <ListIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />

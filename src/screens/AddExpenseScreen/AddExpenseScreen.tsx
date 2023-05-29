@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Alert, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { Alert, ScrollView, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackNavigation } from '@app/App';
 import { CustomButton, LoadingOverlay, TextFieldButton, Typography } from '@app/components';
 import { bgColor } from '@app/constants/styles';
@@ -24,6 +25,9 @@ export const AddExpenseScreen = ({ navigation }: RootStackNavigation<'AddExpense
   const category = useAppSelector(selectCategory);
   const { user } = useContext(AuthContext);
   const [addExpense, { isLoading }] = useAddExpenseMutation();
+
+  const insets = useSafeAreaInsets();
+  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
 
   const methods = useForm<AddExpenseFormValuesType>({
     defaultValues: initialValues,
@@ -63,34 +67,29 @@ export const AddExpenseScreen = ({ navigation }: RootStackNavigation<'AddExpense
 
   return (
     <FormProvider {...methods}>
-      <SafeAreaView style={styles.screen}>
-        <ScrollView style={[styles.screen, styles.innerScreen]}>
-          <AmountAndType />
+      <ScrollView style={[styles.screen, styles.screen, safeArea]}>
+        <AmountAndType />
 
-          <TextFieldButton
-            onPress={() => navigation.navigate('ExpensesCategories')}
-            label="Category"
-            style={styles.category}>
-            <Typography type="normal">{category}</Typography>
-          </TextFieldButton>
+        <TextFieldButton
+          onPress={() => navigation.navigate('ExpensesCategories')}
+          label="Category"
+          style={styles.category}>
+          <Typography type="normal">{category}</Typography>
+        </TextFieldButton>
 
-          <CustomButton
-            onPress={handleSubmit(onSubmit)}
-            style={styles.button}
-            disabled={isSubmitting}>
-            <Typography type="button">ADD</Typography>
-          </CustomButton>
-        </ScrollView>
-      </SafeAreaView>
+        <CustomButton
+          onPress={handleSubmit(onSubmit)}
+          style={styles.button}
+          disabled={isSubmitting}>
+          <Typography type="button">ADD</Typography>
+        </CustomButton>
+      </ScrollView>
     </FormProvider>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-  },
-  innerScreen: {
     paddingHorizontal: 16,
     backgroundColor: bgColor,
     position: 'relative',

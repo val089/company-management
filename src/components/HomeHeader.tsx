@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ExitDoorIcon } from '@app/assets/icons/ExitDoorIcon';
 import { GlobalStyles } from '@app/constants/styles';
 import { bgColor } from '@app/constants/styles';
@@ -20,17 +20,19 @@ export const HomeHeader = () => {
   };
 
   return (
-    <View style={styles.header}>
-      <View style={styles.userInfo}>
-        <Avatar size={40} />
-        <Typography type="normal" style={styles.userInfo_text}>
-          Hello <Text style={styles.userInfo_email}>{user?.email}</Text>
-        </Typography>
+    <SafeAreaView>
+      <View style={styles.header}>
+        <View style={styles.userInfo}>
+          <Avatar size={40} />
+          <Typography type="normal" style={styles.userInfo_text}>
+            Hello <Text style={styles.userInfo_email}>{user?.email}</Text>
+          </Typography>
+        </View>
+        <Pressable onPress={logoutHandler}>
+          <ExitDoorIcon fill={GlobalStyles.colors.blue100} size={35} />
+        </Pressable>
       </View>
-      <Pressable onPress={logoutHandler}>
-        <ExitDoorIcon fill={GlobalStyles.colors.blue100} size={35} />
-      </Pressable>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -43,6 +45,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     elevation: 20,
+    shadowColor: GlobalStyles.colors.black,
+    shadowOffset: { width: -2, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
   userInfo: {
     flexDirection: 'row',

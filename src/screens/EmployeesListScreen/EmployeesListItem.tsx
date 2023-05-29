@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Avatar, Typography } from '@app/components';
 import { bgColor } from '@app/constants/styles';
+import { GlobalStyles } from '@app/constants/styles';
 import { Employee } from '@app/types';
 import { useNavigation } from '@react-navigation/native';
 
@@ -49,8 +50,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 15,
     elevation: 20,
-    shadowColor: '#000',
     marginBottom: 20,
+    shadowColor: GlobalStyles.colors.black,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
   paddingText: {
     paddingLeft: 20,

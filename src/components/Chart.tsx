@@ -1,9 +1,12 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 import { GlobalStyles } from '@app/constants/styles';
+import { fontColor } from '@app/constants/styles';
 import { Expense } from '@app/types';
 import { formatDataForChart } from '@app/utils/formatDataForChart';
 import { getTimestampFirstDayOfMonthsAgo } from '@app/utils/getTimestampFirstDayOfMonthsAgo';
+
+import { Typography } from './Typography';
 
 interface ChartProps {
   expenses: Expense[];
@@ -44,28 +47,34 @@ export const Chart = ({ expenses = [] }: ChartProps) => {
   };
 
   return (
-    <View style={styles.container}>
-      <BarChart
-        segments={4}
-        fromZero
-        style={styles.chart}
-        data={data}
-        width={Dimensions.get('window').width}
-        height={300}
-        chartConfig={{
-          decimalPlaces: 0,
-          backgroundGradientFrom: GlobalStyles.colors.blue100,
-          backgroundGradientFromOpacity: 0.95,
-          backgroundGradientTo: GlobalStyles.colors.blue100,
-          backgroundGradientToOpacity: 1,
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 10) => `rgba(255, 255, 255, ${opacity})`,
-        }}
-        verticalLabelRotation={0}
-        yAxisLabel="$"
-        yAxisSuffix=""
-      />
-    </View>
+    <>
+      <Typography type="normal" style={styles.sectionTitle}>
+        Revenue during thwo months
+      </Typography>
+
+      <View style={styles.container}>
+        <BarChart
+          segments={4}
+          fromZero
+          style={styles.chart}
+          data={data}
+          width={Dimensions.get('window').width}
+          height={300}
+          chartConfig={{
+            decimalPlaces: 0,
+            backgroundGradientFrom: GlobalStyles.colors.blue100,
+            backgroundGradientFromOpacity: 0.95,
+            backgroundGradientTo: GlobalStyles.colors.blue100,
+            backgroundGradientToOpacity: 1,
+            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            labelColor: (opacity = 10) => `rgba(255, 255, 255, ${opacity})`,
+          }}
+          verticalLabelRotation={0}
+          yAxisLabel="$"
+          yAxisSuffix=""
+        />
+      </View>
+    </>
   );
 };
 
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chart: {
-    paddingTop: 30,
+    paddingTop: 20,
   },
   filters: {
     flexDirection: 'row',
@@ -89,5 +98,11 @@ const styles = StyleSheet.create({
   },
   filterText: {
     color: GlobalStyles.colors.white,
+  },
+  sectionTitle: {
+    paddingTop: 16,
+    fontWeight: 'bold',
+    paddingHorizontal: 16,
+    color: fontColor,
   },
 });

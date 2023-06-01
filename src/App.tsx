@@ -9,7 +9,7 @@ import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
 import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
 import { store } from '@app/store/store';
 import auth from '@react-native-firebase/auth';
-import { DefaultTheme, LinkingOptions, NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { BasicHeader } from './components/BasicHeader';
@@ -17,7 +17,6 @@ import { bgColor, GlobalStyles } from './constants/styles';
 import { AddExpenseScreen } from './screens/AddExpenseScreen/AddExpenseScreen';
 import { EmployeeDetailsScreen } from './screens/EmployeeDetailsScreen';
 import { ExpensesCategoriesScreen } from './screens/ExpensesCategoriesScreen';
-import { TakingPhotoAndUploadingScreen } from './screens/TakingPhotoAndUploadingScreen';
 
 const colorScheme = Appearance.getColorScheme();
 
@@ -29,7 +28,6 @@ export type RootStackParamList = {
   TabNavigation: undefined;
   AddEmployee: undefined;
   EmployeeDetails: { employeeId: string };
-  TakingPhotoAndUploading: undefined;
   Expenses: undefined;
   AddExpense: undefined;
   ExpensesCategories: undefined;
@@ -85,7 +83,6 @@ const AuthenticatedStack = () => {
           header: () => <BasicHeader title="Employee Details" />,
         }}
       />
-      <Stack.Screen name="TakingPhotoAndUploading" component={TakingPhotoAndUploadingScreen} />
       <Stack.Screen
         name="AddExpense"
         component={AddExpenseScreen}

@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 24,
     elevation: 20,
-    borderColor: GlobalStyles.colors.blue100,
-    borderWidth: 1,
   },
   header: {
     width: '100%',

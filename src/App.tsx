@@ -9,7 +9,7 @@ import { LoginScreen } from '@app/screens/LoginScreen/LoginScreen';
 import { SignUpScreen } from '@app/screens/SignUpScreen/SignUpScreen';
 import { store } from '@app/store/store';
 import auth from '@react-native-firebase/auth';
-import { DefaultTheme, LinkingOptions, NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { BasicHeader } from './components/BasicHeader';

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native';
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { AddIcon } from '@app/assets/icons/AddIcon';
 import { BackArrowIcon } from '@app/assets/icons/BackArrowIcon';
 import { bgColor, fontColor, GlobalStyles } from '@app/constants/styles';
@@ -16,7 +16,6 @@ type BasicHeaderProps = {
 
 export const BasicHeader = ({ title = '', isBackIcon = true, onPlusPress }: BasicHeaderProps) => {
   const navigation = useNavigation();
-  const insets = useSafeAreaInsets();
 
   const headerStyle: ViewStyle = {
     justifyContent: isBackIcon ? 'flex-start' : 'space-between',

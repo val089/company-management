@@ -16,7 +16,10 @@ export const RecentlyHiredEmployeesList = ({ employees }: Props) => {
   return (
     <View style={styles.container}>
       <Typography type="normal" style={styles.sectionTitle}>
-        Recently hired employees
+        Recently hired employee
+      </Typography>
+      <Typography type="small" style={styles.sectionTitle}>
+        (during the week)
       </Typography>
       <FlatList
         data={recentlyHirdeEmployees}
@@ -25,6 +28,9 @@ export const RecentlyHiredEmployeesList = ({ employees }: Props) => {
         contentContainerStyle={styles.list}
         horizontal
         showsHorizontalScrollIndicator={false}
+        ListEmptyComponent={
+          <Typography type="normal">No employees were hired during the week</Typography>
+        }
       />
     </View>
   );

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Alert, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackNavigation } from '@app/App';
 import { AddImageModal, Avatar } from '@app/components';
@@ -44,6 +44,11 @@ export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmploy
     }
   };
 
+  const onChoosePhoto = async () => {
+    await choosePhoto();
+    hideModal();
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={[styles.screen, safeArea]}>
       <Pressable style={styles.imgContainer} onPress={showModal}>
@@ -53,7 +58,7 @@ export const AddEmployeeScreen = ({ navigation }: RootStackNavigation<'AddEmploy
       <AddImageModal
         isModalOpen={isModalOpen}
         hideModal={hideModal}
-        choosePhoto={choosePhoto}
+        choosePhoto={onChoosePhoto}
         openCamera={openCamera}
       />
     </ScrollView>

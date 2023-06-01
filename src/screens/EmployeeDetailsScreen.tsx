@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackNavigation } from '@app/App';
 import { Avatar, Typography } from '@app/components';
 import { useAppSelector } from '@app/hooks/reduxHooks';
@@ -9,6 +10,9 @@ export const EmployeeDetailsScreen = ({ route }: RootStackNavigation<'EmployeeDe
   const { employeeId } = route.params;
   const employees = useAppSelector(state => state.employees.employees);
 
+  const insets = useSafeAreaInsets();
+  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
+
   const employeeDetails = employees.find(employee => employee.id === employeeId);
 
   if (!employeeDetails) {
@@ -16,7 +20,7 @@ export const EmployeeDetailsScreen = ({ route }: RootStackNavigation<'EmployeeDe
   }
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={[styles.screen, safeArea]}>
       <ScrollView>
         <View>
           <View style={styles.imageContainer}>

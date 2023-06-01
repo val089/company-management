@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ModalPopup } from '@app/components/ModalPopup';
 
 import { CustomButton } from './CustomButton';
@@ -26,11 +26,11 @@ export const AddImageModal = ({
       footer={null}>
       <View style={styles.content}>
         <CustomButton onPress={choosePhoto}>
-          <Text>Open Gallery</Text>
+          <Typography type="button">Open Gallery</Typography>
         </CustomButton>
 
         <CustomButton onPress={openCamera} style={styles.openCameraBtn}>
-          <Text>Open Camera</Text>
+          <Typography type="button">Open Camera</Typography>
         </CustomButton>
       </View>
     </ModalPopup>

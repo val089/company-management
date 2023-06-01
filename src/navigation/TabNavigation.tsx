@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import { Animated, Dimensions, StyleSheet, View } from 'react-native';
+import { Animated, Dimensions, Platform, StyleSheet, View } from 'react-native';
 import { RootStackParamList } from '@app/App';
 import { RootStackNavigation } from '@app/App';
 import { CashIcon } from '@app/assets/icons/CashIcon';
 import { HomeIcon } from '@app/assets/icons/HomeIcon';
 import { ListIcon } from '@app/assets/icons/ListIcon';
-import { BasicHeader, HomeHeader, Typography } from '@app/components';
+import { BasicHeader, HomeHeader } from '@app/components';
 import { GlobalStyles } from '@app/constants/styles';
 import { bgColor } from '@app/constants/styles';
 import { EmployeesListScreen } from '@app/screens/EmployeesListScreen/EmployeesListScreen';
@@ -24,6 +24,8 @@ const getWidth = () => {
 
 export const TabNavigation = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
+
+  const topForIos = Platform.OS === 'ios' ? 12 : 0;
 
   return (
     <>
@@ -52,7 +54,7 @@ export const TabNavigation = () => {
             component={HomeScreen}
             options={{
               tabBarIcon: ({ focused }) => (
-                <View style={{ top: 12 }}>
+                <View style={{ top: topForIos }}>
                   <HomeIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />
@@ -108,7 +110,7 @@ export const TabNavigation = () => {
             component={ExpensesScreen}
             options={({ navigation }: RootStackNavigation<'Expenses'>) => ({
               tabBarIcon: ({ focused }) => (
-                <View style={{ top: 12 }}>
+                <View style={{ top: topForIos }}>
                   <CashIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />
@@ -138,7 +140,7 @@ export const TabNavigation = () => {
               // tabBarLabel: ({ focused }) =>
               //   focused && <Typography type="tabMenu">EMPLOYEES LIST</Typography>,
               tabBarIcon: ({ focused }) => (
-                <View style={{ top: 12 }}>
+                <View style={{ top: topForIos }}>
                   <ListIcon
                     fill={focused ? GlobalStyles.colors.blue100 : GlobalStyles.colors.grey700}
                   />

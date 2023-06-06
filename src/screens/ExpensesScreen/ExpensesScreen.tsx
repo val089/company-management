@@ -23,7 +23,7 @@ export const ExpensesScreen = () => {
   const expenses = useAppSelector(state => state.expenses.expenses);
 
   const insets = useSafeAreaInsets();
-  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
+  const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 80 };
 
   return (
     <View style={[styles.screen, safeArea]}>
@@ -32,6 +32,11 @@ export const ExpensesScreen = () => {
         keyExtractor={item => item.id}
         data={expenses}
         renderItem={renderItem}
+        ListEmptyComponent={
+          <Typography type="normal" style={styles.info}>
+            No expenses to display
+          </Typography>
+        }
       />
     </View>
   );
@@ -65,5 +70,9 @@ const styles = StyleSheet.create({
   },
   income: {
     color: GlobalStyles.colors.green100,
+  },
+  info: {
+    paddingHorizontal: 16,
+    paddingTop: 32,
   },
 });

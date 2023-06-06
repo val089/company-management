@@ -44,7 +44,7 @@ export const AddExpenseScreen = ({ navigation }: RootStackNavigation<'AddExpense
     try {
       if (user?.uid) {
         const formattedData = {
-          category: formData.category,
+          category,
           type: formData.type as ExpenseType,
           amount: Number(formData.amount),
           userId: user.uid,

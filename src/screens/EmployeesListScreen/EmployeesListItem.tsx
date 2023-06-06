@@ -33,7 +33,7 @@ export const EmployeesListItem = ({
         </Typography>
         <Typography type="small" style={styles.paddingText}>
           <Typography type="normal" style={styles.salaryText}>
-            {`${salary} zł`}
+            {`${salary} PLN`}
           </Typography>
           / month
         </Typography>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     padding: 15,
-    elevation: 20,
+    elevation: 15,
     marginBottom: 20,
     shadowColor: GlobalStyles.colors.black,
     shadowOffset: { width: 1, height: 1 },

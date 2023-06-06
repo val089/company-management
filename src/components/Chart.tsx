@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 import { GlobalStyles } from '@app/constants/styles';
 import { fontColor } from '@app/constants/styles';
@@ -29,7 +29,11 @@ const filterAndFormatExpenses = (expenses: Expense[]) => {
 
 export const Chart = ({ expenses = [] }: ChartProps) => {
   if (!expenses || expenses.length === 0) {
-    return <Text>No expenses to display</Text>;
+    return (
+      <Typography type="normal" style={styles.info}>
+        No expenses to display chart
+      </Typography>
+    );
   }
 
   const formatedDataForChart = filterAndFormatExpenses(expenses);
@@ -104,5 +108,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingHorizontal: 16,
     color: fontColor,
+  },
+  info: {
+    paddingHorizontal: 16,
+    paddingTop: 32,
   },
 });

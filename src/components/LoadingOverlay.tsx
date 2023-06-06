@@ -7,8 +7,8 @@ type LoadingOverlayProps = {
 export const LoadingOverlay = ({ message }: LoadingOverlayProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.message}>{message}</Text>
       <ActivityIndicator size="large" color="white" />
+      <Text style={styles.message}>{message}</Text>
     </View>
   );
 };
@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
-    backgroundColor: 'rgba(0,0,0,0.7)',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   message: {
+    paddingTop: 10,
     color: '#fff',
   },
 });

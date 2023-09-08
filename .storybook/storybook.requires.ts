@@ -8,6 +8,8 @@ import {
   clearDecorators,
 } from '@storybook/react-native';
 
+const { loadStories } = require('./storyLoader');
+
 global.STORIES = [
   {
     titlePrefix: '',
@@ -45,10 +47,4 @@ try {
   argsEnhancers.forEach(enhancer => addArgsEnhancer(enhancer));
 } catch {}
 
-const getStories = () => {
-  return {
-    './src/components/MoneySummary/index.stories.tsx': require('../src/components/MoneySummary/index.stories.tsx'),
-  };
-};
-
-configure(getStories, module, false);
+configure(loadStories, module);

@@ -1,12 +1,9 @@
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { GlobalStyles } from '@app/constants/styles';
 
-import { Typography } from './Typography';
+import { Typography } from '../Typography';
 
-interface MoneySummaryProps {
-  money: number | undefined;
-  style?: StyleProp<ViewStyle>;
-}
+import { MoneySummaryProps } from './types';
 
 export const MoneySummary = ({ money, style = null }: MoneySummaryProps) => {
   const backgroundColor =

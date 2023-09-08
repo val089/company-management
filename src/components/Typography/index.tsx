@@ -1,21 +1,9 @@
-import { Appearance, StyleProp, Text, TextProps, TextStyle } from 'react-native';
+import { Appearance, Text } from 'react-native';
 import { fontColor, GlobalStyles } from '@app/constants/styles';
 
+import { TypographyProps } from './types';
+
 const colorScheme = Appearance.getColorScheme();
-
-export type TypographyType =
-  | 'logoText'
-  | 'button'
-  | 'tabMenu'
-  | 'normal'
-  | 'normalBold'
-  | 'small'
-  | 'large';
-
-interface TypographyProps extends TextProps {
-  type: TypographyType;
-  style?: StyleProp<TextStyle>;
-}
 
 export const Typography = ({ type, style = null, children, ...restProps }: TypographyProps) => {
   const typographyTypes = {

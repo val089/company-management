@@ -14,8 +14,6 @@
     "format": "prettier --write .",
     "test-all": "yarn run check-types && yarn run check-lint && yarn run check-types",
     "prepare": "husky install",
-    "prestorybook": "npx rnstl",
-    "storybook": "react-native start",
     "storybook-generate": "sb-rn-get-stories",
     "storybook-watch": "sb-rn-watcher"
   },

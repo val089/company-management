@@ -8,15 +8,13 @@ import {
   clearDecorators,
 } from '@storybook/react-native';
 
-const { loadStories } = require('./storyLoader');
-
 global.STORIES = [
   {
     titlePrefix: '',
     directory: './src/components',
     files: '**/*.stories.?(ts|tsx)',
     importPathMatcher:
-      '^\\.[\\\\/](?:src[\\\\/]components(?:[\\\\/](?!\\.)(?:(?:(?!(?:^|[\\\\/])\\.).)*?)[\\\\/]|[\\\\/]|$)(?!\\.)(?=.)[^\\\\/]*?\\.stories\\.(?:ts|tsx)?)$',
+      '^\\.[\\\\/](?:src\\/components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx)?)$',
   },
 ];
 
@@ -47,4 +45,11 @@ try {
   argsEnhancers.forEach(enhancer => addArgsEnhancer(enhancer));
 } catch {}
 
-configure(loadStories, module);
+const getStories = () => {
+  return {
+    './src/components/MoneySummary/index.stories.tsx': require('../src/components/MoneySummary/index.stories.tsx'),
+    './src/components/Typography/index.stories.tsx': require('../src/components/Typography/index.stories.tsx'),
+  };
+};
+
+configure(getStories, module, false);

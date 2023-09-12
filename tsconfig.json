@@ -1,16 +1,15 @@
-// prettier-ignore
 {
   "extends": "@tsconfig/react-native/tsconfig.json" /* Recommended React Native TSConfig base */,
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-   "baseUrl": ".",
-    "paths" : {
+    "baseUrl": ".",
+    "paths": {
       "@app/*": ["src/*"]
     },
     "target": "ES2022",
     "jsx": "react-native",
     "module": "commonjs",
-      "moduleResolution": "node" ,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": false,
     "noEmit": true,

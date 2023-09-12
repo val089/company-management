@@ -65,3 +65,6 @@ buck-out/
 
 # My folders
 copies/
+
+# My files
+storybook.requires

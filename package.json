@@ -14,8 +14,6 @@
     "format": "prettier --write .",
     "test-all": "yarn run check-types && yarn run check-lint && yarn run check-types",
     "prepare": "husky install",
-    "prestorybook": "npx rnstl",
-    "storybook": "react-native start",
     "storybook-generate": "sb-rn-get-stories",
     "storybook-watch": "sb-rn-watcher"
   },
@@ -54,6 +52,7 @@
     "@storybook/addon-controls": "6.5.16",
     "@storybook/addon-ondevice-actions": "6.5.6",
     "@storybook/addon-ondevice-controls": "6.5.6",
+    "@storybook/addon-react-native-web": "^0.0.21",
     "@storybook/react-native": "6.5.6",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^26.0.23",

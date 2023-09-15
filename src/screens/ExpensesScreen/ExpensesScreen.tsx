@@ -1,29 +1,30 @@
+import { useCallback } from 'react';
 import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Typography } from '@app/components';
 import { bgColor, GlobalStyles } from '@app/constants/styles';
-import { useAppSelector } from '@app/hooks/reduxHooks';
+import { useFetchExpensesQuery } from '@app/store/slices/api';
 import { Expense, ExpenseType } from '@app/types';
 
-const renderItem: ListRenderItem<Expense> = ({ item }) => {
-  const { amount, type, category } = item;
-  return (
-    <View style={styles.listItem}>
-      <Typography type="small">{category}</Typography>
-      <Typography
-        type="normal"
-        style={type === ExpenseType.EXPENSE ? styles.expense : styles.income}>
-        {`${type === ExpenseType.EXPENSE ? '-' : ''}${amount}`} zł
-      </Typography>
-    </View>
-  );
-};
-
 export const ExpensesScreen = () => {
-  const expenses = useAppSelector(state => state.expenses.expenses);
+  const { data: expenses } = useFetchExpensesQuery({});
 
   const insets = useSafeAreaInsets();
   const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 80 };
+
+  const renderItem: ListRenderItem<Expense> = useCallback(({ item }) => {
+    const { amount, type, category } = item;
+    return (
+      <View style={styles.listItem}>
+        <Typography type="small">{category}</Typography>
+        <Typography
+          type="normal"
+          style={type === ExpenseType.EXPENSE ? styles.expense : styles.income}>
+          {`${type === ExpenseType.EXPENSE ? '-' : ''}${amount}`} zł
+        </Typography>
+      </View>
+    );
+  }, []);
 
   return (
     <View style={[styles.screen, safeArea]}>

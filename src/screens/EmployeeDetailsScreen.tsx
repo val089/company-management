@@ -3,17 +3,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackNavigation } from '@app/App';
 import { Avatar, Typography } from '@app/components';
-import { useAppSelector } from '@app/hooks/reduxHooks';
+import { useFetchEmployeesQuery } from '@app/store/slices/api';
 import { formatISOstring } from '@app/utils/formatISOstring';
 
 export const EmployeeDetailsScreen = ({ route }: RootStackNavigation<'EmployeeDetails'>) => {
   const { employeeId } = route.params;
-  const employees = useAppSelector(state => state.employees.employees);
+  const { data: employees } = useFetchEmployeesQuery({});
 
   const insets = useSafeAreaInsets();
   const safeArea = { paddingTop: insets.top + 70, paddingBottom: insets.bottom + 40 };
 
-  const employeeDetails = employees.find(employee => employee.id === employeeId);
+  const employeeDetails = employees?.find(employee => employee.id === employeeId);
 
   if (!employeeDetails) {
     return <Typography type="normal">Sorry, something went wrong.</Typography>;

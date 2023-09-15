@@ -1,30 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { Chart, LoadingOverlay, MoneySummary } from '@app/components';
 import { bgColor } from '@app/constants/styles';
 import { AuthContext } from '@app/context/auth-context';
 import { useFetchEmployeesQuery, useFetchExpensesQuery } from '@app/store/slices/api';
-import { setEmployees } from '@app/store/slices/employees';
-import { setExpenses } from '@app/store/slices/expenses';
 
 import { RecentlyHiredEmployeesList } from './RecentlyHiredEmployeesList';
 
 export const HomeScreen = () => {
   const { user } = useContext(AuthContext);
-  const dispatch = useDispatch();
   const { data: employees, isFetching: fetchingEmployees } = useFetchEmployeesQuery({});
   const { data: expenses, isFetching: fetchingExpenses } = useFetchExpensesQuery({});
-
-  useEffect(() => {
-    if (employees) {
-      dispatch(setEmployees(employees));
-    }
-
-    if (expenses) {
-      dispatch(setExpenses(expenses));
-    }
-  }, [employees, expenses, dispatch]);
 
   if (!user) return null;
 

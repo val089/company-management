@@ -2,3 +2,4 @@ node_modules
 build
 copies
 ios
+storybook.requires

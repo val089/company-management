@@ -1,6 +1,7 @@
 # Company Management React Native App
 
 ![image](https://github.com/val089/company-management/assets/30775271/5bc3b71c-ab8c-4ddf-87cf-93491b09fa54)
+![image](https://github.com/val089/company-management/assets/30775271/7a1d4f9b-7da0-4380-b35a-bcd489947d71)
 
 ## Installation
 
@@ -22,11 +23,6 @@ yarn android / yarn ios
 # or
 npm android / npm ios
 ```
-
-![image](https://github.com/val089/company-management/assets/30775271/7a1d4f9b-7da0-4380-b35a-bcd489947d71)
-![image](https://github.com/val089/company-management/assets/30775271/434898a8-7377-4b61-aebb-7cb092b074e5)
-![image](https://github.com/val089/company-management/assets/30775271/f6d2c6a0-0c81-493b-bc00-1e8379e7dae1)
-![image](https://github.com/val089/company-management/assets/30775271/cc5d31c3-50fb-43e3-b526-93eacebe1420)
 
 ## Technologies
 

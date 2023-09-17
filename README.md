@@ -1,8 +1,8 @@
 # Company Management React Native App
 
-<img src="https://github.com/val089/company-management/assets/30775271/22d2ccab-6f9a-43ef-ab63-9bab772a91b2" width=300 height=200/>
+<img src="https://github.com/val089/company-management/assets/30775271/22d2ccab-6f9a-43ef-ab63-9bab772a91b2" width=300 />
 
-<img src="https://github.com/val089/company-management/assets/30775271/6dc55ffb-4f57-46cc-9b1b-a7e1122c18ee" width=300 height=200 />
+<img src="https://github.com/val089/company-management/assets/30775271/6dc55ffb-4f57-46cc-9b1b-a7e1122c18ee" width=300 />
 
 
 ## Installation

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { Chart, LoadingOverlay, MoneySummary } from '@app/components';
 import { bgColor } from '@app/constants/styles';
 import { AuthContext } from '@app/context/auth-context';
@@ -29,11 +29,17 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.moneySummaryContainer}>
-        <MoneySummary money={money?.amount} style={styles.moneySummary} />
-      </View>
-      {expenses && <Chart expenses={expenses} />}
-      {employees && <RecentlyHiredEmployeesList employees={employees} />}
+      <ScrollView style={styles.innerScreen}>
+        <View style={styles.moneySummaryContainer}>
+          <MoneySummary money={money?.amount} style={styles.moneySummary} />
+        </View>
+        {expenses && <Chart expenses={expenses} />}
+        {employees && (
+          <View style={styles.employeesListContainer}>
+            <RecentlyHiredEmployeesList employees={employees} />
+          </View>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -42,6 +48,10 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: bgColor,
+    Bottom: 100,
+  },
+  innerScreen: {
+    flex: 1,
   },
   moneySummaryContainer: {
     paddingHorizontal: 16,
@@ -49,5 +59,8 @@ const styles = StyleSheet.create({
   },
   moneySummary: {
     width: '50%',
+  },
+  employeesListContainer: {
+    paddingBottom: 70,
   },
 });

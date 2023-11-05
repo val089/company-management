@@ -4,7 +4,7 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
-npx lint-staged
+yarn lint-staged
 yarn run format || 
 (
         echo '❌❌❌ Your styling looks disgusting. ❌❌❌
